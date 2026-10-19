@@ -1,0 +1,5 @@
+line-length = 130
+[lint]
+select = ["E", "F", "W", "I"]
+[lint.isort]
+known-local-folder = ["kitti", "scene", "shadows", "sun", "synthetic"]

@@ -1,0 +1,13 @@
+# Python 3.12; torch from https://download.pytorch.org/whl/cpu
+torch
+transformers
+numpy
+scipy
+pandas
+matplotlib
+pillow
+pvlib
+jupyter
+jupytext
+pytest
+ruff
