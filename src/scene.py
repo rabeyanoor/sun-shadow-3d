@@ -25,6 +25,24 @@ def segment(img):
     return logits.argmax(1)[0].numpy()
 
 
+_m2f = None
+
+
+@torch.no_grad()
+def segment_m2f(img, repo="facebook/mask2former-swin-large-cityscapes-semantic"):
+    """Stronger Cityscapes segmentation (Mask2Former Swin-L), same train ids as segment()."""
+    global _m2f
+    from transformers import AutoImageProcessor, Mask2FormerForUniversalSegmentation
+
+    if _m2f is None:
+        dev = "cuda" if torch.cuda.is_available() else "cpu"
+        _m2f = (AutoImageProcessor.from_pretrained(repo),
+                Mask2FormerForUniversalSegmentation.from_pretrained(repo).eval().to(dev), dev)
+    proc, model, dev = _m2f
+    out = model(**proc(images=img, return_tensors="pt").to(dev))
+    return proc.post_process_semantic_segmentation(out, target_sizes=[img.shape[:2]])[0].cpu().numpy()
+
+
 def receiver_mask(labels, classes=(ROAD,)):
     """Flat, mostly uniform surfaces where a cast shadow is easy to see.
 
@@ -45,6 +63,12 @@ def observed_shadow(img, receiver, dark_ratio=0.55):
     dark = (lum < dark_ratio * lit_level) & receiver
     dark = ndimage.binary_opening(dark, iterations=1)
     return ndimage.median_filter(dark.astype(np.uint8), size=5).astype(bool) & receiver
+
+
+def observed_shadow_net(prob, receiver, threshold=0.5):
+    """Shadow pixels on the receiver from a learned detector's probability map."""
+    sh = ndimage.median_filter((prob > threshold).astype(np.uint8), size=5).astype(bool)
+    return sh & receiver
 
 
 def densify_lidar(sparse, max_gap=2):

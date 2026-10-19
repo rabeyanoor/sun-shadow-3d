@@ -2,4 +2,4 @@ line-length = 130
 [lint]
 select = ["E", "F", "W", "I"]
 [lint.isort]
-known-local-folder = ["kitti", "scene", "shadows", "sun", "synthetic"]
+known-local-folder = ["depth_models", "kitti", "scene", "shadow_net", "shadows", "sun", "synthetic"]
