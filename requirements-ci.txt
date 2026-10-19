@@ -1,0 +1,7 @@
+numpy
+scipy
+pandas
+pillow
+pvlib
+pytest
+ruff

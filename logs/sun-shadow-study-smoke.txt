@@ -1,0 +1,88 @@
++ pip install -q transformers==5.20.1 pvlib datasets git+https://github.com/microsoft/MoGe.git
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.8/12.8 MB 80.2 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 19.4/19.4 MB 68.4 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 846.4/846.4 kB 20.6 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 750.4/750.4 kB 16.7 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 248.0/248.0 MB 6.8 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 308.3/308.3 kB 9.2 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 53.0/53.0 kB 1.2 MB/s eta 0:00:00
++ cd /tmp/sun/data/raw && unzip -q -o 2011_09_26_calib.zip && rm 2011_09_26_calib.zip
++ cd /tmp/sun/data/raw && unzip -q -o 2011_09_26_drive_0001.zip '*/image_02/*' '*/oxts/*' && rm 2011_09_26_drive_0001.zip
++ cd /tmp/sun && /usr/bin/python3 scripts/shadow_study.py --raw /tmp/sun/data/raw --out /kaggle/working/study --shadow-epochs 1 --istd-limit 16 --max-frames 1 --models dav2-s --drives 2011_09_26_drive_0001
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Generating train split:   0%|          | 0/1330 [00:00<?, ? examples/s]
+Generating train split:   6%|▋         | 86/1330 [00:00<00:09, 137.78 examples/s]
+Generating train split:  13%|█▎        | 172/1330 [00:00<00:04, 238.81 examples/s]
+Generating train split:  19%|█▉        | 258/1330 [00:00<00:03, 307.31 examples/s]
+Generating train split:  32%|███▏      | 419/1330 [00:01<00:03, 301.88 examples/s]
+Generating train split:  38%|███▊      | 505/1330 [00:01<00:02, 315.98 examples/s]
+Generating train split:  44%|████▍     | 591/1330 [00:01<00:02, 345.14 examples/s]
+Generating train split:  57%|█████▋    | 752/1330 [00:02<00:01, 335.18 examples/s]
+Generating train split:  63%|██████▎   | 838/1330 [00:02<00:01, 347.94 examples/s]
+Generating train split:  69%|██████▉   | 924/1330 [00:02<00:01, 371.32 examples/s]
+Generating train split:  82%|████████▏ | 1084/1330 [00:03<00:00, 322.17 examples/s]
+Generating train split:  88%|████████▊ | 1170/1330 [00:03<00:00, 336.39 examples/s]
+Generating train split:  94%|█████████▍| 1256/1330 [00:03<00:00, 367.04 examples/s]
+Generating train split: 100%|██████████| 1330/1330 [00:03<00:00, 337.70 examples/s]
+Generating test split:   0%|          | 0/540 [00:00<?, ? examples/s]
+Generating test split:  17%|█▋        | 92/540 [00:00<00:01, 259.15 examples/s]
+Generating test split:  34%|███▍      | 184/540 [00:00<00:01, 346.02 examples/s]
+Generating test split:  67%|██████▋   | 362/540 [00:01<00:00, 349.88 examples/s]
+Generating test split:  84%|████████▍ | 454/540 [00:01<00:00, 393.39 examples/s]
+Generating test split: 100%|██████████| 540/540 [00:01<00:00, 464.03 examples/s]
+Generating test split: 100%|██████████| 540/540 [00:01<00:00, 399.94 examples/s]
+[transformers] You passed `num_labels=2` which is incompatible to the `id2label` map of length `1000`.
+Loading weights:   0%|          | 0/364 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 364/364 [00:00<00:00, 4773.59it/s]
+[transformers] [1mSegformerForSemanticSegmentation LOAD REPORT[0m from: nvidia/mit-b2
+Key                                                     | Status     | 
+--------------------------------------------------------+------------+-
+classifier.weight                                       | UNEXPECTED | 
+classifier.bias                                         | UNEXPECTED | 
+decode_head.batch_norm.weight                           | MISSING    | 
+decode_head.classifier.weight                           | MISSING    | 
+decode_head.batch_norm.num_batches_tracked              | MISSING    | 
+decode_head.linear_projections.{0, 1, 2, 3}.proj.bias   | MISSING    | 
+decode_head.linear_fuse.weight                          | MISSING    | 
+decode_head.linear_projections.{0, 1, 2, 3}.proj.weight | MISSING    | 
+decode_head.batch_norm.running_var                      | MISSING    | 
+decode_head.classifier.bias                             | MISSING    | 
+decode_head.batch_norm.running_mean                     | MISSING    | 
+decode_head.batch_norm.bias                             | MISSING    | 
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+/tmp/sun/src/shadow_net.py:22: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:213.)
+  x = torch.from_numpy(np.asarray(img, dtype=np.uint8)).permute(2, 0, 1).float()[None] / 255
+/tmp/sun/src/shadow_net.py:76: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  running.append(float(loss))
+epoch 1/1  loss 0.6512  (2 steps)
+ISTD test BER 49.61%  (2.5 min)
+Loading weights:   0%|          | 0/758 [00:00<?, ?it/s]
+Loading weights:  23%|██▎       | 176/758 [00:00<00:00, 1743.68it/s]
+Loading weights:  46%|████▋     | 351/758 [00:00<00:00, 1650.89it/s]
+Loading weights:  68%|██████▊   | 517/758 [00:00<00:00, 1482.09it/s]
+Loading weights:  91%|█████████ | 689/758 [00:00<00:00, 1564.68it/s]
+Loading weights: 100%|██████████| 758/758 [00:00<00:00, 1600.48it/s]
+[transformers] [1mMask2FormerForUniversalSegmentation LOAD REPORT[0m from: facebook/mask2former-swin-large-cityscapes-semantic
+Key                                                                                                                      | Status     | 
+-------------------------------------------------------------------------------------------------------------------------+------------+-
+model.pixel_level_module.encoder.swin.encoder.layers.{0, 1, 2, 3}.blocks.{0...17}.attention.self.relative_position_index | UNEXPECTED | 
+model.pixel_level_module.encoder.swin.layernorm.bias                                                                     | MISSING    | 
+model.pixel_level_module.encoder.swin.layernorm.weight                                                                   | MISSING    | 
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+1 frames
+Loading weights:   0%|          | 0/287 [00:00<?, ?it/s]
+Loading weights:  60%|██████    | 173/287 [00:00<00:00, 1729.66it/s]
+Loading weights: 100%|██████████| 287/287 [00:00<00:00, 1544.84it/s]
+dav2-s: done in 0.2 min
+all done
+/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\|'
+  cells[i][c] = re.sub('\\\\\|', '|', cell)
+/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\_'
+  text = re.sub(r'_', '\_', text) # Escape underscores in display text
+[NbConvertApp] Converting notebook __script__.ipynb to html
+[NbConvertApp] Writing 317178 bytes to __results__.html
