@@ -1,93 +1,93 @@
-[{"stream_name":"stdout","time":9.254407833,"data":"+ apt-get -qq update \u0026\u0026 DEBIAN_FRONTEND=noninteractive apt-get -qq install -y --no-install-recommends texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-science latexmk \u003e /dev/null\n"}
-,{"stream_name":"stderr","time":14.248267285,"data":"W: Skipping acquire of configured file 'main/source/Sources' as repository 'https://r2u.stat.illinois.edu/ubuntu noble InRelease' does not seem to provide it (sources.list entry misspelt?)\n"}
-,{"stream_name":"stdout","time":118.582159142,"data":"+ cd /tmp/paper \u0026\u0026 latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex \u003e build.log 2\u003e\u00261\n"}
-,{"stream_name":"stdout","time":119.939900483,"data":"+ cd /tmp/paper \u0026\u0026 grep -nE '^!|Warning.*undefined|Overfull|Citation .* undefined|Reference .* undefined' build.log | head -80\n"}
-,{"stream_name":"stdout","time":119.95049139,"data":"109:Package natbib Warning: Citation `yang2024dav2' on page 1 undefined on input li\n"}
-,{"stream_name":"stdout","time":119.950519905,"data":"113:Package natbib Warning: Citation `bochkovskii2025depthpro' on page 1 undefined \n"}
-,{"stream_name":"stdout","time":119.950526295,"data":"117:Package natbib Warning: Citation `wang2025moge2' on page 1 undefined on input l\n"}
-,{"stream_name":"stdout","time":119.950531895,"data":"121:Package natbib Warning: Citation `hu2024metric3dv2' on page 1 undefined on inpu\n"}
-,{"stream_name":"stdout","time":119.950537129,"data":"125:Package natbib Warning: Citation `piccinelli2024unidepth' on page 1 undefined o\n"}
-,{"stream_name":"stdout","time":119.950542672,"data":"129:Package natbib Warning: Citation `reda2004spa' on page 1 undefined on input lin\n"}
-,{"stream_name":"stdout","time":119.9505477,"data":"133:Package natbib Warning: Citation `holmgren2018pvlib' on page 1 undefined on inp\n"}
-,{"stream_name":"stdout","time":119.950552767,"data":"137:Package natbib Warning: Citation `kender1987darkness' on page 1 undefined on in\n"}
-,{"stream_name":"stdout","time":119.950557665,"data":"141:Package natbib Warning: Citation `daum1998shadows' on page 1 undefined on input\n"}
-,{"stream_name":"stdout","time":119.950565143,"data":"145:Package natbib Warning: Citation `abrams2013episolar' on page 1 undefined on in\n"}
-,{"stream_name":"stdout","time":119.950570221,"data":"149:Package natbib Warning: Citation `cao2007solar' on page 1 undefined on input li\n"}
-,{"stream_name":"stdout","time":119.950575133,"data":"153:Package natbib Warning: Citation `lalonde2010sun' on page 1 undefined on input \n"}
-,{"stream_name":"stdout","time":119.950587584,"data":"157:Package natbib Warning: Citation `junejo2008geotemporal' on page 1 undefined on\n"}
-,{"stream_name":"stdout","time":119.950591076,"data":"161:LaTeX Warning: Reference `prop:scale' on page 1 undefined on input line 19.\n"}
-,{"stream_name":"stdout","time":119.950594107,"data":"164:LaTeX Warning: Reference `prop:focal' on page 1 undefined on input line 21.\n"}
-,{"stream_name":"stdout","time":119.950597449,"data":"167:LaTeX Warning: Reference `cor:bound' on page 1 undefined on input line 22.\n"}
-,{"stream_name":"stdout","time":119.950600592,"data":"170:LaTeX Warning: Reference `cor:lower' on page 1 undefined on input line 24.\n"}
-,{"stream_name":"stdout","time":119.950603826,"data":"173:LaTeX Warning: Reference `sec:synthetic' on page 1 undefined on input line 28.\n"}
-,{"stream_name":"stdout","time":119.950606784,"data":"176:Package natbib Warning: Citation `geiger2013kitti' on page 1 undefined on input\n"}
-,{"stream_name":"stdout","time":119.950610165,"data":"180:LaTeX Warning: Reference `fig:teaser' on page 1 undefined on input line 29.\n"}
-,{"stream_name":"stdout","time":119.950613187,"data":"183:Package natbib Warning: Citation `xie2021segformer' on page 1 undefined on inpu\n"}
-,{"stream_name":"stdout","time":119.950631792,"data":"187:Package natbib Warning: Citation `wang2018istd' on page 1 undefined on input li\n"}
-,{"stream_name":"stdout","time":119.950636877,"data":"191:LaTeX Warning: Reference `sec:kitti' on page 1 undefined on input line 33.\n"}
-,{"stream_name":"stdout","time":119.950641029,"data":"194:LaTeX Warning: Reference `cor:lower' on page 1 undefined on input line 35.\n"}
-,{"stream_name":"stdout","time":119.950646626,"data":"197:Package natbib Warning: Citation `cohen1960kappa' on page 1 undefined on input \n"}
-,{"stream_name":"stdout","time":119.950650988,"data":"201:LaTeX Warning: Reference `sec:coverage' on page 1 undefined on input line 38.\n"}
-,{"stream_name":"stdout","time":119.950655026,"data":"208:Package natbib Warning: Citation `kender1987darkness' on page 2 undefined on in\n"}
-,{"stream_name":"stdout","time":119.950658944,"data":"212:Package natbib Warning: Citation `daum1998shadows' on page 2 undefined on input\n"}
-,{"stream_name":"stdout","time":119.950663028,"data":"216:Package natbib Warning: Citation `abrams2013episolar' on page 2 undefined on in\n"}
-,{"stream_name":"stdout","time":119.950666929,"data":"220:Package natbib Warning: Citation `cao2007solar' on page 2 undefined on input li\n"}
-,{"stream_name":"stdout","time":119.950671046,"data":"224:Package natbib Warning: Citation `junejo2008geotemporal' on page 2 undefined on\n"}
-,{"stream_name":"stdout","time":119.950675193,"data":"228:Package natbib Warning: Citation `lalonde2010sun' on page 2 undefined on input \n"}
-,{"stream_name":"stdout","time":119.950679106,"data":"232:Package natbib Warning: Citation `lalonde2009illumination' on page 2 undefined \n"}
-,{"stream_name":"stdout","time":119.950683091,"data":"236:Package natbib Warning: Citation `holdgeoffroy2017outdoor' on page 2 undefined \n"}
-,{"stream_name":"stdout","time":119.950686943,"data":"240:Package natbib Warning: Citation `derksen2021snerf' on page 2 undefined on inpu\n"}
-,{"stream_name":"stdout","time":119.950690828,"data":"244:Package natbib Warning: Citation `ling2023shadowneus' on page 2 undefined on in\n"}
-,{"stream_name":"stdout","time":119.950694316,"data":"248:Package natbib Warning: Citation `griffiths2022outcast' on page 2 undefined on \n"}
-,{"stream_name":"stdout","time":119.950696717,"data":"252:Package natbib Warning: Citation `zhu2018bdrar' on page 2 undefined on input li\n"}
-,{"stream_name":"stdout","time":119.950699122,"data":"256:Package natbib Warning: Citation `chen2020mtmt' on page 2 undefined on input li\n"}
-,{"stream_name":"stdout","time":119.950701495,"data":"260:Package natbib Warning: Citation `wang2020instanceshadow' on page 2 undefined o\n"}
-,{"stream_name":"stdout","time":119.950703925,"data":"264:Package natbib Warning: Citation `wang2018istd' on page 2 undefined on input li\n"}
-,{"stream_name":"stdout","time":119.950706537,"data":"268:Package natbib Warning: Citation `xie2021segformer' on page 2 undefined on inpu\n"}
-,{"stream_name":"stdout","time":119.950709723,"data":"272:Package natbib Warning: Citation `zhou2017sfmlearner' on page 2 undefined on in\n"}
-,{"stream_name":"stdout","time":119.950713991,"data":"276:Package natbib Warning: Citation `godard2019monodepth2' on page 2 undefined on \n"}
-,{"stream_name":"stdout","time":119.950717867,"data":"280:Package natbib Warning: Citation `poggi2020uncertainty' on page 2 undefined on \n"}
-,{"stream_name":"stdout","time":119.950721924,"data":"285:LaTeX Warning: Reference `sec:synthetic' on page 1 undefined on input line 22.\n"}
-,{"stream_name":"stdout","time":119.95072599,"data":"288:Overfull \\hbox (40.37042pt too wide) detected at line 31\n"}
-,{"stream_name":"stdout","time":119.950729484,"data":"294:LaTeX Warning: Reference `prop:scale' on page 1 undefined on input line 38.\n"}
-,{"stream_name":"stdout","time":119.950745648,"data":"297:LaTeX Warning: Reference `tab:kitti' on page 1 undefined on input line 39.\n"}
-,{"stream_name":"stdout","time":119.950751148,"data":"300:LaTeX Warning: Reference `fig:synthetic' on page 1 undefined on input line 39.\n"}
-,{"stream_name":"stdout","time":119.950755178,"data":"304:LaTeX Warning: Reference `eq:bound' on page 1 undefined on input line 62.\n"}
-,{"stream_name":"stdout","time":119.950759188,"data":"307:LaTeX Warning: Reference `fig:coverage' on page 1 undefined on input line 64.\n"}
-,{"stream_name":"stdout","time":119.950763094,"data":"310:LaTeX Warning: Reference `sec:coverage' on page 1 undefined on input line 81.\n"}
-,{"stream_name":"stdout","time":119.950767017,"data":"314:Package natbib Warning: Citation `reda2004spa' on page 3 undefined on input lin\n"}
-,{"stream_name":"stdout","time":119.950770928,"data":"318:Package natbib Warning: Citation `holmgren2018pvlib' on page 3 undefined on inp\n"}
-,{"stream_name":"stdout","time":119.950775023,"data":"322:Package natbib Warning: Citation `cheng2022mask2former' on page 3 undefined on \n"}
-,{"stream_name":"stdout","time":119.950778933,"data":"326:Package natbib Warning: Citation `cordts2016cityscapes' on page 3 undefined on \n"}
-,{"stream_name":"stdout","time":119.950783129,"data":"330:LaTeX Warning: Reference `sec:coverage' on page 1 undefined on input line 13.\n"}
-,{"stream_name":"stdout","time":119.95078711,"data":"333:Package natbib Warning: Citation `xie2021segformer' on page 3 undefined on inpu\n"}
-,{"stream_name":"stdout","time":119.950791095,"data":"337:Package natbib Warning: Citation `wang2018istd' on page 3 undefined on input li\n"}
-,{"stream_name":"stdout","time":119.95079504,"data":"341:Package natbib Warning: Citation `cohen1960kappa' on page 3 undefined on input \n"}
-,{"stream_name":"stdout","time":119.95079889,"data":"345:Package natbib Warning: Citation `yang2024dav2' on page 3 undefined on input li\n"}
-,{"stream_name":"stdout","time":119.95080276,"data":"349:Package natbib Warning: Citation `bochkovskii2025depthpro' on page 3 undefined \n"}
-,{"stream_name":"stdout","time":119.950806434,"data":"353:Package natbib Warning: Citation `wang2025moge2' on page 3 undefined on input l\n"}
-,{"stream_name":"stdout","time":119.950810157,"data":"358:LaTeX Warning: Reference `fig:synthetic' on page 1 undefined on input line 8.\n"}
-,{"stream_name":"stdout","time":119.950814211,"data":"361:LaTeX Warning: Reference `sec:method' on page 1 undefined on input line 11.\n"}
-,{"stream_name":"stdout","time":119.950818227,"data":"364:LaTeX Warning: Reference `prop:focal' on page 1 undefined on input line 18.\n"}
-,{"stream_name":"stdout","time":119.95082219,"data":"367:LaTeX Warning: Reference `prop:focal' on page 1 undefined on input line 18.\n"}
-,{"stream_name":"stdout","time":119.950826043,"data":"370:LaTeX Warning: Reference `prop:scale' on page 1 undefined on input line 23.\n"}
-,{"stream_name":"stdout","time":119.950829833,"data":"373:LaTeX Warning: Reference `sec:theory' on page 1 undefined on input line 29.\n"}
-,{"stream_name":"stdout","time":119.950833856,"data":"376:LaTeX Warning: Reference `cor:lower' on page 1 undefined on input line 31.\n"}
-,{"stream_name":"stdout","time":119.950837499,"data":"379:LaTeX Warning: Reference `tab:kitti' on page 1 undefined on input line 40.\n"}
-,{"stream_name":"stdout","time":119.950841737,"data":"382:LaTeX Warning: Reference `fig:kitti' on page 1 undefined on input line 40.\n"}
-,{"stream_name":"stdout","time":119.950845706,"data":"386:LaTeX Warning: Reference `cor:bound' on page 1 undefined on input line 58.\n"}
-,{"stream_name":"stdout","time":119.95085034,"data":"389:LaTeX Warning: Reference `prop:scale' on page 1 undefined on input line 62.\n"}
-,{"stream_name":"stdout","time":119.950858197,"data":"392:Package natbib Warning: Citation `yang2024dav2' on page 4 undefined on input li\n"}
-,{"stream_name":"stdout","time":119.950862565,"data":"396:LaTeX Warning: Reference `tab:models' on page 1 undefined on input line 78.\n"}
-,{"stream_name":"stdout","time":119.950866437,"data":"399:Overfull \\hbox (30.89792pt too wide) in paragraph at lines 3--11\n"}
-,{"stream_name":"stdout","time":119.950870394,"data":"403:LaTeX Warning: Reference `cor:lower' on page 1 undefined on input line 86.\n"}
-,{"stream_name":"stdout","time":119.950874285,"data":"406:LaTeX Warning: Reference `fig:coverage' on page 1 undefined on input line 87.\n"}
-,{"stream_name":"stdout","time":119.950878224,"data":"+ cp /tmp/paper/main.pdf /tmp/paper/build.log /tmp/paper/main.log /kaggle/working/ 2\u003e/dev/null\n"}
-,{"stream_name":"stdout","time":119.954557954,"data":"latexmk exit code 12\n"}
-,{"stream_name":"stderr","time":122.726662122,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
-,{"stream_name":"stderr","time":122.726700948,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
-,{"stream_name":"stderr","time":123.10256044,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
-,{"stream_name":"stderr","time":123.102591029,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
-,{"stream_name":"stderr","time":124.883156718,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
-,{"stream_name":"stderr","time":126.137562277,"data":"[NbConvertApp] Writing 275800 bytes to __results__.html\n"}
+[{"stream_name":"stdout","time":1.711877453,"data":"+ apt-get -qq update \u0026\u0026 DEBIAN_FRONTEND=noninteractive apt-get -qq install -y --no-install-recommends texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-science latexmk \u003e /dev/null\n"}
+,{"stream_name":"stderr","time":5.97836969,"data":"W: Skipping acquire of configured file 'main/source/Sources' as repository 'https://r2u.stat.illinois.edu/ubuntu noble InRelease' does not seem to provide it (sources.list entry misspelt?)\n"}
+,{"stream_name":"stdout","time":106.481346299,"data":"+ cd /tmp/paper \u0026\u0026 latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex \u003e build.log 2\u003e\u00261\n"}
+,{"stream_name":"stdout","time":111.265705974,"data":"+ cd /tmp/paper \u0026\u0026 grep -nE '^!|Warning.*undefined|Overfull|Citation .* undefined|Reference .* undefined' build.log | head -80\n"}
+,{"stream_name":"stdout","time":111.269687558,"data":"109:Package natbib Warning: Citation `yang2024dav2' on page 1 undefined on input li\n"}
+,{"stream_name":"stdout","time":111.269712103,"data":"113:Package natbib Warning: Citation `bochkovskii2025depthpro' on page 1 undefined \n"}
+,{"stream_name":"stdout","time":111.269716184,"data":"117:Package natbib Warning: Citation `wang2025moge2' on page 1 undefined on input l\n"}
+,{"stream_name":"stdout","time":111.269719484,"data":"121:Package natbib Warning: Citation `hu2024metric3dv2' on page 1 undefined on inpu\n"}
+,{"stream_name":"stdout","time":111.269722757,"data":"125:Package natbib Warning: Citation `piccinelli2024unidepth' on page 1 undefined o\n"}
+,{"stream_name":"stdout","time":111.269725649,"data":"129:Package natbib Warning: Citation `reda2004spa' on page 1 undefined on input lin\n"}
+,{"stream_name":"stdout","time":111.269728541,"data":"133:Package natbib Warning: Citation `holmgren2018pvlib' on page 1 undefined on inp\n"}
+,{"stream_name":"stdout","time":111.269731482,"data":"137:Package natbib Warning: Citation `kender1987darkness' on page 1 undefined on in\n"}
+,{"stream_name":"stdout","time":111.269734446,"data":"141:Package natbib Warning: Citation `daum1998shadows' on page 1 undefined on input\n"}
+,{"stream_name":"stdout","time":111.269737316,"data":"145:Package natbib Warning: Citation `abrams2013episolar' on page 1 undefined on in\n"}
+,{"stream_name":"stdout","time":111.269740178,"data":"149:Package natbib Warning: Citation `cao2007solar' on page 1 undefined on input li\n"}
+,{"stream_name":"stdout","time":111.269743226,"data":"153:Package natbib Warning: Citation `lalonde2010sun' on page 1 undefined on input \n"}
+,{"stream_name":"stdout","time":111.269746187,"data":"157:Package natbib Warning: Citation `junejo2008geotemporal' on page 1 undefined on\n"}
+,{"stream_name":"stdout","time":111.269749052,"data":"161:LaTeX Warning: Reference `prop:scale' on page 1 undefined on input line 19.\n"}
+,{"stream_name":"stdout","time":111.26975197,"data":"164:LaTeX Warning: Reference `prop:focal' on page 1 undefined on input line 21.\n"}
+,{"stream_name":"stdout","time":111.269754868,"data":"167:LaTeX Warning: Reference `cor:bound' on page 1 undefined on input line 22.\n"}
+,{"stream_name":"stdout","time":111.269757857,"data":"170:LaTeX Warning: Reference `cor:lower' on page 1 undefined on input line 24.\n"}
+,{"stream_name":"stdout","time":111.269760705,"data":"173:LaTeX Warning: Reference `sec:synthetic' on page 1 undefined on input line 28.\n"}
+,{"stream_name":"stdout","time":111.269763621,"data":"176:Package natbib Warning: Citation `geiger2013kitti' on page 1 undefined on input\n"}
+,{"stream_name":"stdout","time":111.269766692,"data":"180:LaTeX Warning: Reference `fig:teaser' on page 1 undefined on input line 29.\n"}
+,{"stream_name":"stdout","time":111.26976987,"data":"183:Package natbib Warning: Citation `xie2021segformer' on page 1 undefined on inpu\n"}
+,{"stream_name":"stdout","time":111.269787151,"data":"187:Package natbib Warning: Citation `wang2018istd' on page 1 undefined on input li\n"}
+,{"stream_name":"stdout","time":111.269791712,"data":"191:LaTeX Warning: Reference `sec:kitti' on page 1 undefined on input line 33.\n"}
+,{"stream_name":"stdout","time":111.269795345,"data":"194:LaTeX Warning: Reference `cor:lower' on page 1 undefined on input line 35.\n"}
+,{"stream_name":"stdout","time":111.269799795,"data":"197:Package natbib Warning: Citation `cohen1960kappa' on page 1 undefined on input \n"}
+,{"stream_name":"stdout","time":111.269802977,"data":"201:LaTeX Warning: Reference `sec:coverage' on page 1 undefined on input line 38.\n"}
+,{"stream_name":"stdout","time":111.269806197,"data":"208:Package natbib Warning: Citation `kender1987darkness' on page 2 undefined on in\n"}
+,{"stream_name":"stdout","time":111.269809501,"data":"212:Package natbib Warning: Citation `daum1998shadows' on page 2 undefined on input\n"}
+,{"stream_name":"stdout","time":111.269812835,"data":"216:Package natbib Warning: Citation `abrams2013episolar' on page 2 undefined on in\n"}
+,{"stream_name":"stdout","time":111.269816527,"data":"220:Package natbib Warning: Citation `cao2007solar' on page 2 undefined on input li\n"}
+,{"stream_name":"stdout","time":111.269820041,"data":"224:Package natbib Warning: Citation `junejo2008geotemporal' on page 2 undefined on\n"}
+,{"stream_name":"stdout","time":111.269823357,"data":"228:Package natbib Warning: Citation `lalonde2010sun' on page 2 undefined on input \n"}
+,{"stream_name":"stdout","time":111.269826714,"data":"232:Package natbib Warning: Citation `lalonde2009illumination' on page 2 undefined \n"}
+,{"stream_name":"stdout","time":111.269830219,"data":"236:Package natbib Warning: Citation `holdgeoffroy2017outdoor' on page 2 undefined \n"}
+,{"stream_name":"stdout","time":111.269833248,"data":"240:Package natbib Warning: Citation `derksen2021snerf' on page 2 undefined on inpu\n"}
+,{"stream_name":"stdout","time":111.269836754,"data":"244:Package natbib Warning: Citation `ling2023shadowneus' on page 2 undefined on in\n"}
+,{"stream_name":"stdout","time":111.269840488,"data":"248:Package natbib Warning: Citation `griffiths2022outcast' on page 2 undefined on \n"}
+,{"stream_name":"stdout","time":111.269843763,"data":"252:Package natbib Warning: Citation `hu2025physshadow' on page 2 undefined on inpu\n"}
+,{"stream_name":"stdout","time":111.269847267,"data":"256:Package natbib Warning: Citation `hu2025attached' on page 2 undefined on input \n"}
+,{"stream_name":"stdout","time":111.269850914,"data":"260:Package natbib Warning: Citation `zhu2018bdrar' on page 2 undefined on input li\n"}
+,{"stream_name":"stdout","time":111.269854326,"data":"264:Package natbib Warning: Citation `chen2020mtmt' on page 2 undefined on input li\n"}
+,{"stream_name":"stdout","time":111.269857663,"data":"268:Package natbib Warning: Citation `wang2020instanceshadow' on page 2 undefined o\n"}
+,{"stream_name":"stdout","time":111.269861165,"data":"272:Package natbib Warning: Citation `wang2018istd' on page 2 undefined on input li\n"}
+,{"stream_name":"stdout","time":111.269865303,"data":"276:Package natbib Warning: Citation `xie2021segformer' on page 2 undefined on inpu\n"}
+,{"stream_name":"stdout","time":111.269869376,"data":"280:Package natbib Warning: Citation `zhou2017sfmlearner' on page 2 undefined on in\n"}
+,{"stream_name":"stdout","time":111.269873104,"data":"284:Package natbib Warning: Citation `godard2019monodepth2' on page 2 undefined on \n"}
+,{"stream_name":"stdout","time":111.269877036,"data":"288:Package natbib Warning: Citation `poggi2020uncertainty' on page 2 undefined on \n"}
+,{"stream_name":"stdout","time":111.269880383,"data":"293:LaTeX Warning: Reference `sec:synthetic' on page 1 undefined on input line 22.\n"}
+,{"stream_name":"stdout","time":111.26988986,"data":"296:Overfull \\hbox (40.37042pt too wide) detected at line 31\n"}
+,{"stream_name":"stdout","time":111.269894253,"data":"303:LaTeX Warning: Reference `prop:scale' on page 1 undefined on input line 38.\n"}
+,{"stream_name":"stdout","time":111.269898226,"data":"306:LaTeX Warning: Reference `tab:kitti' on page 1 undefined on input line 39.\n"}
+,{"stream_name":"stdout","time":111.269902011,"data":"309:LaTeX Warning: Reference `fig:synthetic' on page 1 undefined on input line 39.\n"}
+,{"stream_name":"stdout","time":111.26990558,"data":"312:LaTeX Warning: Reference `eq:bound' on page 1 undefined on input line 62.\n"}
+,{"stream_name":"stdout","time":111.269909006,"data":"315:LaTeX Warning: Reference `fig:coverage' on page 1 undefined on input line 64.\n"}
+,{"stream_name":"stdout","time":111.269912536,"data":"318:LaTeX Warning: Reference `sec:coverage' on page 1 undefined on input line 81.\n"}
+,{"stream_name":"stdout","time":111.269916235,"data":"322:Package natbib Warning: Citation `reda2004spa' on page 3 undefined on input lin\n"}
+,{"stream_name":"stdout","time":111.269919499,"data":"326:Package natbib Warning: Citation `holmgren2018pvlib' on page 3 undefined on inp\n"}
+,{"stream_name":"stdout","time":111.269923119,"data":"330:Package natbib Warning: Citation `cheng2022mask2former' on page 3 undefined on \n"}
+,{"stream_name":"stdout","time":111.269926404,"data":"334:Package natbib Warning: Citation `cordts2016cityscapes' on page 3 undefined on \n"}
+,{"stream_name":"stdout","time":111.269929889,"data":"338:LaTeX Warning: Reference `sec:coverage' on page 1 undefined on input line 13.\n"}
+,{"stream_name":"stdout","time":111.269933198,"data":"341:Package natbib Warning: Citation `xie2021segformer' on page 3 undefined on inpu\n"}
+,{"stream_name":"stdout","time":111.269936861,"data":"345:Package natbib Warning: Citation `wang2018istd' on page 3 undefined on input li\n"}
+,{"stream_name":"stdout","time":111.269940432,"data":"349:Package natbib Warning: Citation `cohen1960kappa' on page 3 undefined on input \n"}
+,{"stream_name":"stdout","time":111.26994356,"data":"353:Package natbib Warning: Citation `yang2024dav2' on page 3 undefined on input li\n"}
+,{"stream_name":"stdout","time":111.269946931,"data":"357:Package natbib Warning: Citation `bochkovskii2025depthpro' on page 3 undefined \n"}
+,{"stream_name":"stdout","time":111.269950453,"data":"361:Package natbib Warning: Citation `wang2025moge2' on page 3 undefined on input l\n"}
+,{"stream_name":"stdout","time":111.269953746,"data":"366:LaTeX Warning: Reference `fig:synthetic' on page 1 undefined on input line 8.\n"}
+,{"stream_name":"stdout","time":111.269957687,"data":"369:LaTeX Warning: Reference `sec:method' on page 1 undefined on input line 11.\n"}
+,{"stream_name":"stdout","time":111.26996093,"data":"372:LaTeX Warning: Reference `prop:focal' on page 1 undefined on input line 18.\n"}
+,{"stream_name":"stdout","time":111.269984254,"data":"375:LaTeX Warning: Reference `prop:focal' on page 1 undefined on input line 18.\n"}
+,{"stream_name":"stdout","time":111.269991859,"data":"378:LaTeX Warning: Reference `prop:scale' on page 1 undefined on input line 23.\n"}
+,{"stream_name":"stdout","time":111.269995408,"data":"381:LaTeX Warning: Reference `sec:theory' on page 1 undefined on input line 29.\n"}
+,{"stream_name":"stdout","time":111.269998737,"data":"384:LaTeX Warning: Reference `cor:lower' on page 1 undefined on input line 31.\n"}
+,{"stream_name":"stdout","time":111.270002178,"data":"387:LaTeX Warning: Reference `tab:kitti' on page 1 undefined on input line 40.\n"}
+,{"stream_name":"stdout","time":111.270006957,"data":"390:LaTeX Warning: Reference `fig:kitti' on page 1 undefined on input line 40.\n"}
+,{"stream_name":"stdout","time":111.270014455,"data":"394:LaTeX Warning: Reference `cor:bound' on page 1 undefined on input line 58.\n"}
+,{"stream_name":"stdout","time":111.27001829700001,"data":"397:LaTeX Warning: Reference `prop:scale' on page 1 undefined on input line 62.\n"}
+,{"stream_name":"stdout","time":111.270021851,"data":"400:Package natbib Warning: Citation `yang2024dav2' on page 4 undefined on input li\n"}
+,{"stream_name":"stdout","time":111.270025499,"data":"404:LaTeX Warning: Reference `tab:models' on page 1 undefined on input line 78.\n"}
+,{"stream_name":"stdout","time":111.270029344,"data":"407:Overfull \\hbox (30.89792pt too wide) in paragraph at lines 3--11\n"}
+,{"stream_name":"stdout","time":111.270032905,"data":"+ cp /tmp/paper/main.pdf /tmp/paper/build.log /tmp/paper/main.log /kaggle/working/ 2\u003e/dev/null\n"}
+,{"stream_name":"stdout","time":111.273004535,"data":"latexmk exit code 0\n"}
+,{"stream_name":"stderr","time":113.917962656,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":113.918016653,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":114.332544521,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":114.332570879,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":116.016644826,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":117.19927752,"data":"[NbConvertApp] Writing 275800 bytes to __results__.html\n"}
 ]

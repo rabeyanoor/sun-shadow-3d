@@ -209,9 +209,9 @@ lines += [r"\bottomrule", r"\end{tabular}",
           r"\label{tab:kitti}", r"\end{table*}"]
 (GEN / "table_kitti.tex").write_text("\n".join(lines) + "\n")
 
-lines = [r"\begin{table}[t]", r"\centering\small", r"\begin{tabular}{lcccc}", r"\toprule",
+lines = [r"\begin{table}[t]", r"\centering\small", r"\setlength{\tabcolsep}{3.5pt}", r"\begin{tabular}{lcccc}", r"\toprule",
          "detector & " + " & ".join(MODELS.values()) + r" \\", r"\midrule"]
-for det, label in [("threshold", "threshold"), ("segformer-istd", "SegFormer-ISTD")]:
+for det, label in [("threshold", "threshold"), ("segformer-istd", "learned")]:
     row = rank_tab.loc[det]
     lines.append(label + " & " + " & ".join(f"{x:.3f}" for x in row.values) + r" \\")
 lines += [r"\bottomrule", r"\end{tabular}",

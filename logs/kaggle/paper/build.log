@@ -249,36 +249,44 @@ Package natbib Warning: Citation `griffiths2022outcast' on page 2 undefined on
 input line 13.
 
 
+Package natbib Warning: Citation `hu2025physshadow' on page 2 undefined on inpu
+t line 15.
+
+
+Package natbib Warning: Citation `hu2025attached' on page 2 undefined on input 
+line 16.
+
+
 Package natbib Warning: Citation `zhu2018bdrar' on page 2 undefined on input li
-ne 19.
+ne 21.
 
 
 Package natbib Warning: Citation `chen2020mtmt' on page 2 undefined on input li
-ne 19.
+ne 21.
 
 
 Package natbib Warning: Citation `wang2020instanceshadow' on page 2 undefined o
-n input line 19.
+n input line 21.
 
 
 Package natbib Warning: Citation `wang2018istd' on page 2 undefined on input li
-ne 20.
+ne 22.
 
 
 Package natbib Warning: Citation `xie2021segformer' on page 2 undefined on inpu
-t line 21.
+t line 23.
 
 
 Package natbib Warning: Citation `zhou2017sfmlearner' on page 2 undefined on in
-put line 25.
+put line 27.
 
 
 Package natbib Warning: Citation `godard2019monodepth2' on page 2 undefined on 
-input line 25.
+input line 27.
 
 
 Package natbib Warning: Citation `poggi2020uncertainty' on page 2 undefined on 
-input line 26.
+input line 28.
 
 ) (./sec/3_theory.tex
 
@@ -290,6 +298,7 @@ Overfull \hbox (40.37042pt too wide) detected at line 31
 /10 ) = \OML/cmm/m/it/10 M[]d; K;  s[][];  s[] \OT1/cmr/m/n/10 = [] \OMS/cmsy/m
 /n/10 / \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ks[];  ks[];  s[]\OT1/cmr/m/n/10 )\OM
 L/cmm/m/it/10 :
+[2 <./fig/teaser.pdf>]
 
 LaTeX Warning: Reference `prop:scale' on page 1 undefined on input line 38.
 
@@ -299,7 +308,6 @@ LaTeX Warning: Reference `tab:kitti' on page 1 undefined on input line 39.
 
 LaTeX Warning: Reference `fig:synthetic' on page 1 undefined on input line 39.
 
-[2 <./fig/teaser.pdf>]
 
 LaTeX Warning: Reference `eq:bound' on page 1 undefined on input line 62.
 
@@ -422,11 +430,10 @@ LaTeX Warning: Reference `cor:lower' on page 1 undefined on input line 109.
 
 LaTeX Warning: Reference `cor:bound' on page 1 undefined on input line 109.
 
-) (./sec/6_discussion.tex
+) (./sec/6_discussion.tex [5 <./fig/kitti_study.pdf>]
 
 LaTeX Warning: Reference `prop:scale' on page 1 undefined on input line 6.
 
-[5 <./fig/kitti_study.pdf>]
 
 LaTeX Warning: Reference `prop:focal' on page 1 undefined on input line 8.
 
@@ -479,7 +486,7 @@ f-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/t
 imes/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (6 pages, 349283 bytes).
+Output written on main.pdf (6 pages, 349904 bytes).
 Transcript written on main.log.
 Latexmk: Missing bbl file 'main.bbl' in following:
  No file main.bbl.
@@ -507,36 +514,689 @@ This is BibTeX, Version 0.99d (TeX Live 2023/Debian)
 The top-level auxiliary file: main.aux
 The style file: ieeenat_fullname.bst
 Database file #1: main.bib
-I was expecting a `,' or a `}'---line 3 of file main.bib
- : 
- : @inproceedings{bochkovskii2025depthpro,
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
-Warning--to sort, need author or key in yang2024dav2
-Warning--empty author in yang2024dav2
-Warning--empty booktitle in yang2024dav2
-Warning--empty year in yang2024dav2
-Warning--empty year in yang2024dav2
-(There was 1 error message)
-Latexmk: ====Undefined refs and citations with line #s in .tex file:
-  Citation `yang2024dav2' on page 1 undefined on input line 4
-  Citation `bochkovskii2025depthpro' on page 1 undefined on input line 4
-  Citation `wang2025moge2' on page 1 undefined on input line 5
-  Citation `hu2024metric3dv2' on page 1 undefined on input line 5
-  Citation `piccinelli2024unidepth' on page 1 undefined on input line 5
-  Citation `reda2004spa' on page 1 undefined on input line 10
-  Citation `holmgren2018pvlib' on page 1 undefined on input line 10
- And 84 more --- see log file 'main.log'
-Latexmk: Sometimes, the -f option can be used to get latexmk
-  to try to force complete processing.
-  But normally, you will need to correct the file(s) that caused the
-  error, and then rerun latexmk.
-  In some cases, it is best to clean out generated files before rerunning
-  latexmk after you've corrected the files.
-Latexmk: Summary of warnings from last run of *latex:
-  Latex failed to resolve 43 reference(s)
-  Latex failed to resolve 48 citation(s)
-Latexmk: Errors, so I did not complete making targets
-Collected error summary (may duplicate other messages):
-  bibtex main: Bibtex errors: See file 'main.blg'
+Latexmk: applying rule 'pdflatex'...
+Rule 'pdflatex':  Reasons for rerun
+Changed files or newly in use/created:
+  main.aux
+  main.bbl
+  main.out
+
+------------
+Run number 2 of rule 'pdflatex'
+------------
+------------
+Running 'pdflatex  -interaction=nonstopmode -halt-on-error -recorder  "main.tex"'
+------------
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./main.tex
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-01-22>
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2023/05/17 v1.4n Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo)) (./cvpr.sty
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/xspace.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx))
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/dvipsnam.def)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/silence/silence.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty)
+CVPR 8.5 x 11-Inch Proceedings Style `cvpr.sty'.
+(/usr/share/texlive/texmf-dist/tex/latex/lineno/lineno.sty
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty))
+(./preamble.tex (/usr/share/texlive/texmf-dist/tex/latex/sttools/cuted.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/currfile/currfile.sty
+(/usr/share/texlive/texmf-dist/tex/latex/filehook/filehook.sty
+(/usr/share/texlive/texmf-dist/tex/latex/filehook/filehook-2020.sty))))
+(/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/mathtools/mathtools.sty
+(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/mathtools/mhsetup.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/auxhook/auxhook.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/backref.sty
+(/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/atveryend-ltx.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+(/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))))
+(/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/atbegshi-ltx.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def)
+(./gen/numbers.tex)
+(/usr/share/texlive/texmf-dist/tex/latex/cleveref/cleveref.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)
+(./main.aux) (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+(/usr/share/texlive/texmf-dist/tex/latex/grfext/grfext.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+ABD: EveryShipout initializing macros (./main.out) (./main.out)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
+(./sec/0_abstract.tex) (./sec/1_intro.tex
+
+Package natbib Warning: Citation `yang2024dav2' on page 1 undefined on input li
+ne 4.
+
+
+Package natbib Warning: Citation `bochkovskii2025depthpro' on page 1 undefined 
+on input line 4.
+
+
+Package natbib Warning: Citation `wang2025moge2' on page 1 undefined on input l
+ine 5.
+
+
+Package natbib Warning: Citation `hu2024metric3dv2' on page 1 undefined on inpu
+t line 5.
+
+
+Package natbib Warning: Citation `piccinelli2024unidepth' on page 1 undefined o
+n input line 5.
+
+
+Package natbib Warning: Citation `reda2004spa' on page 1 undefined on input lin
+e 10.
+
+
+Package natbib Warning: Citation `holmgren2018pvlib' on page 1 undefined on inp
+ut line 10.
+
+
+Package natbib Warning: Citation `kender1987darkness' on page 1 undefined on in
+put line 12.
+
+
+Package natbib Warning: Citation `daum1998shadows' on page 1 undefined on input
+ line 12.
+
+
+Package natbib Warning: Citation `abrams2013episolar' on page 1 undefined on in
+put line 12.
+
+
+Package natbib Warning: Citation `cao2007solar' on page 1 undefined on input li
+ne 13.
+
+
+Package natbib Warning: Citation `lalonde2010sun' on page 1 undefined on input 
+line 13.
+
+
+Package natbib Warning: Citation `junejo2008geotemporal' on page 1 undefined on
+ input line 13.
+
+
+Package natbib Warning: Citation `geiger2013kitti' on page 1 undefined on input
+ line 29.
+
+
+Package natbib Warning: Citation `xie2021segformer' on page 1 undefined on inpu
+t line 30.
+
+
+Package natbib Warning: Citation `wang2018istd' on page 1 undefined on input li
+ne 31.
+
+
+Package natbib Warning: Citation `cohen1960kappa' on page 1 undefined on input 
+line 38.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1phv.fd) [1{/var/lib/texmf/fo
+nts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-dist/fonts/enc/dvips
+/base/8r.enc}] (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd))
+(./sec/2_related.tex
+
+Package natbib Warning: Citation `kender1987darkness' on page 2 undefined on in
+put line 5.
+
+
+Package natbib Warning: Citation `daum1998shadows' on page 2 undefined on input
+ line 5.
+
+
+Package natbib Warning: Citation `abrams2013episolar' on page 2 undefined on in
+put line 6.
+
+
+Package natbib Warning: Citation `cao2007solar' on page 2 undefined on input li
+ne 8.
+
+
+Package natbib Warning: Citation `junejo2008geotemporal' on page 2 undefined on
+ input line 8.
+
+
+Package natbib Warning: Citation `lalonde2010sun' on page 2 undefined on input 
+line 9.
+
+
+Package natbib Warning: Citation `lalonde2009illumination' on page 2 undefined 
+on input line 9.
+
+
+Package natbib Warning: Citation `holdgeoffroy2017outdoor' on page 2 undefined 
+on input line 10.
+
+
+Package natbib Warning: Citation `derksen2021snerf' on page 2 undefined on inpu
+t line 11.
+
+
+Package natbib Warning: Citation `ling2023shadowneus' on page 2 undefined on in
+put line 12.
+
+
+Package natbib Warning: Citation `griffiths2022outcast' on page 2 undefined on 
+input line 13.
+
+
+Package natbib Warning: Citation `hu2025physshadow' on page 2 undefined on inpu
+t line 15.
+
+
+Package natbib Warning: Citation `hu2025attached' on page 2 undefined on input 
+line 16.
+
+
+Package natbib Warning: Citation `zhu2018bdrar' on page 2 undefined on input li
+ne 21.
+
+
+Package natbib Warning: Citation `chen2020mtmt' on page 2 undefined on input li
+ne 21.
+
+
+Package natbib Warning: Citation `wang2020instanceshadow' on page 2 undefined o
+n input line 21.
+
+
+Package natbib Warning: Citation `wang2018istd' on page 2 undefined on input li
+ne 22.
+
+
+Package natbib Warning: Citation `xie2021segformer' on page 2 undefined on inpu
+t line 23.
+
+
+Package natbib Warning: Citation `zhou2017sfmlearner' on page 2 undefined on in
+put line 27.
+
+
+Package natbib Warning: Citation `godard2019monodepth2' on page 2 undefined on 
+input line 27.
+
+
+Package natbib Warning: Citation `poggi2020uncertainty' on page 2 undefined on 
+input line 28.
+
+) (./sec/3_theory.tex
+Overfull \hbox (40.37042pt too wide) detected at line 31
+[][][]\OML/cmm/m/it/10 M\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 d; K[]; s\OT1/cmr/m/n
+/10 ) = \OML/cmm/m/it/10 M[]d; K;  s[][];  s[] \OT1/cmr/m/n/10 = [] \OMS/cmsy/m
+/n/10 / \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ks[];  ks[];  s[]\OT1/cmr/m/n/10 )\OM
+L/cmm/m/it/10 :
+[2 <./fig/teaser.pdf>]) (./sec/4_method.tex
+
+Package natbib Warning: Citation `reda2004spa' on page 3 undefined on input lin
+e 5.
+
+
+Package natbib Warning: Citation `holmgren2018pvlib' on page 3 undefined on inp
+ut line 5.
+
+
+Package natbib Warning: Citation `cheng2022mask2former' on page 3 undefined on 
+input line 12.
+
+
+Package natbib Warning: Citation `cordts2016cityscapes' on page 3 undefined on 
+input line 13.
+
+
+Package natbib Warning: Citation `xie2021segformer' on page 3 undefined on inpu
+t line 16.
+
+
+Package natbib Warning: Citation `wang2018istd' on page 3 undefined on input li
+ne 17.
+
+
+Package natbib Warning: Citation `cohen1960kappa' on page 3 undefined on input 
+line 30.
+
+
+Package natbib Warning: Citation `yang2024dav2' on page 3 undefined on input li
+ne 34.
+
+
+Package natbib Warning: Citation `bochkovskii2025depthpro' on page 3 undefined 
+on input line 35.
+
+
+Package natbib Warning: Citation `wang2025moge2' on page 3 undefined on input l
+ine 35.
+
+[3]) (./sec/5_experiments.tex (./gen/table_kitti.tex) [4 <./fig/synthetic.pdf>]
+
+
+Package natbib Warning: Citation `yang2024dav2' on page 5 undefined on input li
+ne 78.
+
+(./gen/table_models.tex
+Overfull \hbox (30.89792pt too wide) in paragraph at lines 3--11
+ [][] 
+) [5 <./fig/kitti_study.pdf>]) (./sec/6_discussion.tex
+
+Package natbib Warning: Citation `abrams2013episolar' on page 6 undefined on in
+put line 18.
+
+) (./main.bbl
+No file main.brf.
+
+Package lineno Warning: Line number reference failed, re-run to get it right.
+
+[6])
+
+Package natbib Warning: There were undefined citations.
+
+[7 <./fig/coverage.pdf>] (./main.aux
+
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
+
+)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `main.brf' has changed.
+(rerunfilecheck)                Rerun to get bibliographical references right.
+
+ )
+(see the transcript file for additional information)</usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/t
+imes/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on main.pdf (7 pages, 362026 bytes).
+Transcript written on main.log.
+Latexmk: Missing input file 'main.brf' (or dependence on it) from following:
+  No file main.brf.
+Latexmk: Getting log file 'main.log'
+Latexmk: Examining 'main.fls'
+Latexmk: Examining 'main.log'
+Latexmk: Found input bbl file 'main.bbl'
+Latexmk: References changed.
+Latexmk: References changed.
+Latexmk: References changed.
+Latexmk: Log file says output to 'main.pdf'
+Latexmk: Found bibliography file(s):
+  ./main.bib
+Latexmk: applying rule 'bibtex main'...
+Rule 'bibtex main':  Reasons for rerun
+Changed files or newly in use/created:
+  main.aux
+
+------------
+Run number 2 of rule 'bibtex main'
+------------
+------------
+Running 'bibtex  "main.aux"'
+------------
+This is BibTeX, Version 0.99d (TeX Live 2023/Debian)
+The top-level auxiliary file: main.aux
+The style file: ieeenat_fullname.bst
+Database file #1: main.bib
+Latexmk: applying rule 'pdflatex'...
+Rule 'pdflatex':  Reasons for rerun
+Changed files or newly in use/created:
+  main.aux
+  main.brf
+
+------------
+Run number 3 of rule 'pdflatex'
+------------
+------------
+Running 'pdflatex  -interaction=nonstopmode -halt-on-error -recorder  "main.tex"'
+------------
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./main.tex
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-01-22>
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2023/05/17 v1.4n Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo)) (./cvpr.sty
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/xspace.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx))
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/dvipsnam.def)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/silence/silence.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty)
+CVPR 8.5 x 11-Inch Proceedings Style `cvpr.sty'.
+(/usr/share/texlive/texmf-dist/tex/latex/lineno/lineno.sty
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty))
+(./preamble.tex (/usr/share/texlive/texmf-dist/tex/latex/sttools/cuted.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/currfile/currfile.sty
+(/usr/share/texlive/texmf-dist/tex/latex/filehook/filehook.sty
+(/usr/share/texlive/texmf-dist/tex/latex/filehook/filehook-2020.sty))))
+(/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/mathtools/mathtools.sty
+(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/mathtools/mhsetup.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/auxhook/auxhook.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/backref.sty
+(/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/atveryend-ltx.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+(/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))))
+(/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/atbegshi-ltx.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def)
+(./gen/numbers.tex)
+(/usr/share/texlive/texmf-dist/tex/latex/cleveref/cleveref.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)
+(./main.aux) (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+(/usr/share/texlive/texmf-dist/tex/latex/grfext/grfext.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+ABD: EveryShipout initializing macros (./main.out) (./main.out)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
+(./sec/0_abstract.tex) (./sec/1_intro.tex
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1phv.fd) [1{/var/lib/texmf/fo
+nts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-dist/fonts/enc/dvips
+/base/8r.enc}] (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd))
+(./sec/2_related.tex) (./sec/3_theory.tex
+Overfull \hbox (40.37042pt too wide) detected at line 31
+[][][]\OML/cmm/m/it/10 M\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 d; K[]; s\OT1/cmr/m/n
+/10 ) = \OML/cmm/m/it/10 M[]d; K;  s[][];  s[] \OT1/cmr/m/n/10 = [] \OMS/cmsy/m
+/n/10 / \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ks[];  ks[];  s[]\OT1/cmr/m/n/10 )\OM
+L/cmm/m/it/10 :
+[2 <./fig/teaser.pdf>]) (./sec/4_method.tex [3]) (./sec/5_experiments.tex
+(./gen/table_kitti.tex) [4 <./fig/synthetic.pdf>] (./gen/table_models.tex
+Overfull \hbox (30.89792pt too wide) in paragraph at lines 3--11
+ [][] 
+) [5 <./fig/kitti_study.pdf>]) (./sec/6_discussion.tex) (./main.bbl (./main.brf
+) [6]) [7 <./fig/coverage.pdf>] (./main.aux)
+
+Package rerunfilecheck Warning: File `main.brf' has changed.
+(rerunfilecheck)                Rerun to get bibliographical references right.
+
+ )
+(see the transcript file for additional information)</usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/t
+imes/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on main.pdf (7 pages, 363762 bytes).
+Transcript written on main.log.
+Latexmk: Getting log file 'main.log'
+Latexmk: Examining 'main.fls'
+Latexmk: Examining 'main.log'
+Latexmk: Found input bbl file 'main.bbl'
+Latexmk: References changed.
+Latexmk: Log file says output to 'main.pdf'
+Latexmk: Found bibliography file(s):
+  ./main.bib
+Latexmk: applying rule 'bibtex main'...
+Rule 'bibtex main':  Reasons for rerun
+Changed files or newly in use/created:
+  main.aux
+
+------------
+Run number 3 of rule 'bibtex main'
+------------
+------------
+Running 'bibtex  "main.aux"'
+------------
+This is BibTeX, Version 0.99d (TeX Live 2023/Debian)
+The top-level auxiliary file: main.aux
+The style file: ieeenat_fullname.bst
+Database file #1: main.bib
+Latexmk: applying rule 'pdflatex'...
+Rule 'pdflatex':  Reasons for rerun
+Changed files or newly in use/created:
+  main.aux
+  main.brf
+
+------------
+Run number 4 of rule 'pdflatex'
+------------
+------------
+Running 'pdflatex  -interaction=nonstopmode -halt-on-error -recorder  "main.tex"'
+------------
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./main.tex
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-01-22>
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2023/05/17 v1.4n Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo)) (./cvpr.sty
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/xspace.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx))
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/dvipsnam.def)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/silence/silence.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty)
+CVPR 8.5 x 11-Inch Proceedings Style `cvpr.sty'.
+(/usr/share/texlive/texmf-dist/tex/latex/lineno/lineno.sty
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty))
+(./preamble.tex (/usr/share/texlive/texmf-dist/tex/latex/sttools/cuted.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/currfile/currfile.sty
+(/usr/share/texlive/texmf-dist/tex/latex/filehook/filehook.sty
+(/usr/share/texlive/texmf-dist/tex/latex/filehook/filehook-2020.sty))))
+(/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/mathtools/mathtools.sty
+(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/mathtools/mhsetup.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/auxhook/auxhook.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/backref.sty
+(/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/atveryend-ltx.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+(/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))))
+(/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/atbegshi-ltx.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def)
+(./gen/numbers.tex)
+(/usr/share/texlive/texmf-dist/tex/latex/cleveref/cleveref.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)
+(./main.aux) (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+(/usr/share/texlive/texmf-dist/tex/latex/grfext/grfext.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+ABD: EveryShipout initializing macros (./main.out) (./main.out)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
+(./sec/0_abstract.tex) (./sec/1_intro.tex
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1phv.fd) [1{/var/lib/texmf/fo
+nts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-dist/fonts/enc/dvips
+/base/8r.enc}] (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd))
+(./sec/2_related.tex) (./sec/3_theory.tex
+Overfull \hbox (40.37042pt too wide) detected at line 31
+[][][]\OML/cmm/m/it/10 M\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 d; K[]; s\OT1/cmr/m/n
+/10 ) = \OML/cmm/m/it/10 M[]d; K;  s[][];  s[] \OT1/cmr/m/n/10 = [] \OMS/cmsy/m
+/n/10 / \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ks[];  ks[];  s[]\OT1/cmr/m/n/10 )\OM
+L/cmm/m/it/10 :
+[2 <./fig/teaser.pdf>]) (./sec/4_method.tex [3]) (./sec/5_experiments.tex
+(./gen/table_kitti.tex) [4 <./fig/synthetic.pdf>] (./gen/table_models.tex
+Overfull \hbox (30.89792pt too wide) in paragraph at lines 3--11
+ [][] 
+) [5 <./fig/kitti_study.pdf>]) (./sec/6_discussion.tex) (./main.bbl (./main.brf
+) [6]) [7 <./fig/coverage.pdf>] (./main.aux) )
+(see the transcript file for additional information)</usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/t
+imes/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on main.pdf (7 pages, 365569 bytes).
+Transcript written on main.log.
+Latexmk: Getting log file 'main.log'
+Latexmk: Examining 'main.fls'
+Latexmk: Examining 'main.log'
+Latexmk: Found input bbl file 'main.bbl'
+Latexmk: Log file says output to 'main.pdf'
+Latexmk: Found bibliography file(s):
+  ./main.bib
+Latexmk: All targets (main.pdf) are up-to-date
 
