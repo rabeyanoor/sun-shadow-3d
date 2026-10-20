@@ -1,0 +1,79 @@
+[{"stream_name":"stdout","time":0.94234071,"data":"+ pip install -q transformers==5.20.1 pvlib datasets git+https://github.com/microsoft/MoGe.git\n"}
+,{"stream_name":"stdout","time":33.881235883,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.8/12.8 MB 56.9 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":34.182426872,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 19.4/19.4 MB 50.1 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":34.232175873,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 846.4/846.4 kB 26.7 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":34.277056441,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 750.4/750.4 kB 26.0 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":34.317582739,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 308.3/308.3 kB 16.9 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":34.352045888,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 53.0/53.0 kB 2.7 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":121.303153234,"data":"+ cd /tmp/sun/data/raw \u0026\u0026 unzip -q -o 2011_09_26_calib.zip \u0026\u0026 rm 2011_09_26_calib.zip\n"}
+,{"stream_name":"stdout","time":121.31199115,"data":"+ cd /tmp/sun/data/raw \u0026\u0026 unzip -q -o 2011_09_26_drive_0001.zip '*/image_02/*' '*/oxts/*' \u0026\u0026 rm 2011_09_26_drive_0001.zip\n"}
+,{"stream_name":"stdout","time":121.868838698,"data":"+ cd /tmp/sun/data/raw \u0026\u0026 unzip -q -o 2011_09_26_drive_0005.zip '*/image_02/*' '*/oxts/*' \u0026\u0026 rm 2011_09_26_drive_0005.zip\n"}
+,{"stream_name":"stdout","time":122.666674798,"data":"+ cd /tmp/sun/data/raw \u0026\u0026 unzip -q -o 2011_09_26_drive_0009.zip '*/image_02/*' '*/oxts/*' \u0026\u0026 rm 2011_09_26_drive_0009.zip\n"}
+,{"stream_name":"stdout","time":124.836629624,"data":"+ cd /tmp/sun/data/raw \u0026\u0026 unzip -q -o 2011_09_26_drive_0011.zip '*/image_02/*' '*/oxts/*' \u0026\u0026 rm 2011_09_26_drive_0011.zip\n"}
+,{"stream_name":"stdout","time":125.997016683,"data":"+ cd /tmp/sun/data/raw \u0026\u0026 unzip -q -o 2011_09_26_drive_0013.zip '*/image_02/*' '*/oxts/*' \u0026\u0026 rm 2011_09_26_drive_0013.zip\n"}
+,{"stream_name":"stdout","time":126.791521457,"data":"+ cd /tmp/sun \u0026\u0026 /usr/bin/python3 scripts/shadow_study.py --raw /tmp/sun/data/raw --out /kaggle/working/study --shadow-epochs 8 --every 10 --max-frames 15 --drives 2011_09_26_drive_0001 2011_09_26_drive_0005 2011_09_26_drive_0009 2011_09_26_drive_0011 2011_09_26_drive_0013\n"}
+,{"stream_name":"stderr","time":165.595496158,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":203.703484226,"data":"\rGenerating train split:   0%|          | 0/1330 [00:00\u003c?, ? examples/s]\rGenerating train split:   6%|▋         | 86/1330 [00:00\u003c00:06, 189.31 examples/s]\rGenerating train split:  13%|█▎        | 172/1330 [00:00\u003c00:03, 316.58 examples/s]\rGenerating train split:  19%|█▉        | 258/1330 [00:00\u003c00:02, 392.09 examples/s]\rGenerating train split:  32%|███▏      | 419/1330 [00:01\u003c00:02, 397.07 examples/s]\rGenerating train split:  38%|███▊      | 505/1330 [00:01\u003c00:01, 419.39 examples/s]\rGenerating train split:  44%|████▍     | 591/1330 [00:01\u003c00:01, 451.38 examples/s]\rGenerating train split:  57%|█████▋    | 752/1330 [00:01\u003c00:01, 422.78 examples/s]\rGenerating train split:  63%|██████▎   | 838/1330 [00:02\u003c00:01, 457.44 examples/s]\rGenerating train split:  69%|██████▉   | 924/1330 [00:02\u003c00:00, 481.25 examples/s]\rGenerating train split:  82%|████████▏ | 1084/1330 [00:02\u003c00:00, 433.60 examples/s]\rGenerating train split:  88%|████████▊ | 1170/1330 [00:02\u003c00:00, 446.00 examples/s]\rGenerating train split:  94%|█████████▍| 1256/1330 [00:02\u003c00:00, 479.14 examples/s]\rGenerating train split: 100%|██████████| 1330/1330 [00:03\u003c00:00, 442.98 examples/s]\n"}
+,{"stream_name":"stderr","time":204.733429502,"data":"\rGenerating test split:   0%|          | 0/540 [00:00\u003c?, ? examples/s]\rGenerating test split:  17%|█▋        | 92/540 [00:00\u003c00:01, 305.94 examples/s]\rGenerating test split:  34%|███▍      | 184/540 [00:00\u003c00:00, 430.84 examples/s]\rGenerating test split:  67%|██████▋   | 362/540 [00:00\u003c00:00, 450.07 examples/s]\rGenerating test split:  84%|████████▍ | 454/540 [00:00\u003c00:00, 512.52 examples/s]\rGenerating test split: 100%|██████████| 540/540 [00:01\u003c00:00, 525.49 examples/s]\n"}
+,{"stream_name":"stderr","time":204.999767935,"data":"[transformers] You passed `num_labels=2` which is incompatible to the `id2label` map of length `1000`.\n"}
+,{"stream_name":"stderr","time":207.370519393,"data":"\rLoading weights:   0%|          | 0/364 [00:00\u003c?, ?it/s]\rLoading weights: 100%|██████████| 364/364 [00:00\u003c00:00, 13320.13it/s]\n"}
+,{"stream_name":"stderr","time":207.413826751,"data":"[transformers] \u001b[1mSegformerForSemanticSegmentation LOAD REPORT\u001b[0m from: nvidia/mit-b2\n"}
+,{"stream_name":"stderr","time":207.413853732,"data":"Key                                                     | Status     | \n"}
+,{"stream_name":"stderr","time":207.413858242,"data":"--------------------------------------------------------+------------+-\n"}
+,{"stream_name":"stderr","time":207.413861815,"data":"classifier.bias                                         | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":207.413865517,"data":"classifier.weight                                       | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":207.413869142,"data":"decode_head.linear_projections.{0, 1, 2, 3}.proj.weight | MISSING    | \n"}
+,{"stream_name":"stderr","time":207.413872883,"data":"decode_head.linear_projections.{0, 1, 2, 3}.proj.bias   | MISSING    | \n"}
+,{"stream_name":"stderr","time":207.413876857,"data":"decode_head.linear_fuse.weight                          | MISSING    | \n"}
+,{"stream_name":"stderr","time":207.413880475,"data":"decode_head.batch_norm.num_batches_tracked              | MISSING    | \n"}
+,{"stream_name":"stderr","time":207.41388428,"data":"decode_head.batch_norm.bias                             | MISSING    | \n"}
+,{"stream_name":"stderr","time":207.41388791,"data":"decode_head.batch_norm.running_mean                     | MISSING    | \n"}
+,{"stream_name":"stderr","time":207.413891516,"data":"decode_head.classifier.bias                             | MISSING    | \n"}
+,{"stream_name":"stderr","time":207.413895148,"data":"decode_head.classifier.weight                           | MISSING    | \n"}
+,{"stream_name":"stderr","time":207.413898702,"data":"decode_head.batch_norm.weight                           | MISSING    | \n"}
+,{"stream_name":"stderr","time":207.413902325,"data":"decode_head.batch_norm.running_var                      | MISSING    | \n"}
+,{"stream_name":"stderr","time":207.413905848,"data":"\n"}
+,{"stream_name":"stderr","time":207.413909543,"data":"Notes:\n"}
+,{"stream_name":"stderr","time":207.413912994,"data":"- UNEXPECTED:\tcan be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stderr","time":207.413928015,"data":"- MISSING:\tthose params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stderr","time":211.323087202,"data":"/tmp/sun/src/shadow_net.py:22: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:213.)\n"}
+,{"stream_name":"stderr","time":211.323141068,"data":"  x = torch.from_numpy(np.asarray(img, dtype=np.uint8)).permute(2, 0, 1).float()[None] / 255\n"}
+,{"stream_name":"stderr","time":217.792436818,"data":"/tmp/sun/src/shadow_net.py:76: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.\n"}
+,{"stream_name":"stderr","time":217.792473697,"data":"Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)\n"}
+,{"stream_name":"stderr","time":217.792480053,"data":"  running.append(float(loss))\n"}
+,{"stream_name":"stdout","time":390.103632197,"data":"epoch 1/8  loss 0.2985  (166 steps)\n"}
+,{"stream_name":"stdout","time":572.315130467,"data":"epoch 2/8  loss 0.0539  (332 steps)\n"}
+,{"stream_name":"stdout","time":754.531145869,"data":"epoch 3/8  loss 0.0343  (498 steps)\n"}
+,{"stream_name":"stdout","time":937.154809544,"data":"epoch 4/8  loss 0.0289  (664 steps)\n"}
+,{"stream_name":"stdout","time":1119.83873798,"data":"epoch 5/8  loss 0.0265  (830 steps)\n"}
+,{"stream_name":"stdout","time":1302.267970222,"data":"epoch 6/8  loss 0.0247  (996 steps)\n"}
+,{"stream_name":"stdout","time":1484.833551396,"data":"epoch 7/8  loss 0.0241  (1162 steps)\n"}
+,{"stream_name":"stdout","time":1667.510924211,"data":"epoch 8/8  loss 0.0238  (1328 steps)\n"}
+,{"stream_name":"stdout","time":1696.512785402,"data":"ISTD test BER 1.88%  (25.6 min)\n"}
+,{"stream_name":"stderr","time":1703.424155549,"data":"\rLoading weights:   0%|          | 0/758 [00:00\u003c?, ?it/s]\rLoading weights:  34%|███▍      | 261/758 [00:00\u003c00:00, 2607.98it/s]\rLoading weights:  69%|██████▉   | 522/758 [00:00\u003c00:00, 2520.04it/s]\rLoading weights: 100%|██████████| 758/758 [00:00\u003c00:00, 2588.51it/s]\n"}
+,{"stream_name":"stderr","time":1703.500523625,"data":"[transformers] \u001b[1mMask2FormerForUniversalSegmentation LOAD REPORT\u001b[0m from: facebook/mask2former-swin-large-cityscapes-semantic\n"}
+,{"stream_name":"stderr","time":1703.500549661,"data":"Key                                                                                                                      | Status     | \n"}
+,{"stream_name":"stderr","time":1703.500555516,"data":"-------------------------------------------------------------------------------------------------------------------------+------------+-\n"}
+,{"stream_name":"stderr","time":1703.500560595,"data":"model.pixel_level_module.encoder.swin.encoder.layers.{0, 1, 2, 3}.blocks.{0...17}.attention.self.relative_position_index | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":1703.50056566,"data":"model.pixel_level_module.encoder.swin.layernorm.bias                                                                     | MISSING    | \n"}
+,{"stream_name":"stderr","time":1703.500570489,"data":"model.pixel_level_module.encoder.swin.layernorm.weight                                                                   | MISSING    | \n"}
+,{"stream_name":"stderr","time":1703.500586998,"data":"\n"}
+,{"stream_name":"stderr","time":1703.500590692,"data":"Notes:\n"}
+,{"stream_name":"stderr","time":1703.500594201,"data":"- UNEXPECTED:\tcan be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stderr","time":1703.50059807,"data":"- MISSING:\tthose params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stdout","time":1720.487112807,"data":"71 frames\n"}
+,{"stream_name":"stderr","time":1729.378231235,"data":"\rLoading weights:   0%|          | 0/287 [00:00\u003c?, ?it/s]\rLoading weights:  88%|████████▊ | 253/287 [00:00\u003c00:00, 2519.39it/s]\rLoading weights: 100%|██████████| 287/287 [00:00\u003c00:00, 2633.38it/s]\n"}
+,{"stream_name":"stdout","time":1856.154502039,"data":"dav2-s: done in 2.3 min\n"}
+,{"stream_name":"stderr","time":1865.697956386,"data":"\rLoading weights:   0%|          | 0/503 [00:00\u003c?, ?it/s]\rLoading weights:  52%|█████▏    | 264/503 [00:00\u003c00:00, 2638.42it/s]\rLoading weights: 100%|██████████| 503/503 [00:00\u003c00:00, 2666.62it/s]\n"}
+,{"stream_name":"stdout","time":2118.665843099,"data":"dav2-l: done in 4.4 min\n"}
+,{"stream_name":"stderr","time":2131.690537438,"data":"\rLoading weights:   0%|          | 0/1407 [00:00\u003c?, ?it/s]\rLoading weights:  19%|█▉        | 264/1407 [00:00\u003c00:00, 2633.60it/s]\rLoading weights:  38%|███▊      | 528/1407 [00:00\u003c00:00, 2585.00it/s]\rLoading weights:  56%|█████▌    | 787/1407 [00:00\u003c00:00, 2539.73it/s]\rLoading weights:  74%|███████▍  | 1042/1407 [00:00\u003c00:00, 2518.20it/s]\rLoading weights:  92%|█████████▏| 1294/1407 [00:00\u003c00:00, 2491.92it/s]\rLoading weights: 100%|██████████| 1407/1407 [00:00\u003c00:00, 2531.19it/s]\n"}
+,{"stream_name":"stdout","time":2346.50010656,"data":"depthpro: done in 3.8 min\n"}
+,{"stream_name":"stdout","time":2504.780394392,"data":"moge2-l: done in 2.6 min\n"}
+,{"stream_name":"stdout","time":2504.780455913,"data":"all done\n"}
+,{"stream_name":"stderr","time":2512.194323272,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":2512.194383251,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":2512.479901417,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":2512.479927564,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":2513.271802848,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":2514.289291429,"data":"[NbConvertApp] Writing 317396 bytes to __results__.html\n"}
+]

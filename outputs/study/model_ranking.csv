@@ -1,0 +1,3 @@
+detector,DA-V2-S,DA-V2-L,Depth Pro,MoGe-2-L
+segformer-istd,0.117,0.095,0.118,0.133
+threshold,0.08,0.064,0.092,0.102

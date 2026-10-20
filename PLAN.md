@@ -65,3 +65,11 @@ The laptop is CPU only (8 cores, 14 GB RAM). Notebooks 01-05 are designed to run
 - Shape warp and wrong focal length do lower IoU (0.64 -> 0.41-0.45 at +-50 %).
 - So metric scale is impossible in principle, while shape and focal are possible; on KITTI their signal was lost to the shadow detector and to off-screen casters.
 - The project stops here as a documented pilot; the zoom-equivariance project continues the "free physical ruler" line.
+
+## Full KITTI study (notebook 05, Kaggle, 2026-10-20)
+
+- 5 drives, 71 frames; DA-V2-S/L, Depth Pro, MoGe-2-L; dark-asphalt threshold and a SegFormer mit-b2 shadow detector trained on ISTD (test BER 1.9 %).
+- Scale is flat (as theory says). Shape and focal move the IoU monotonically towards *compressed* depth, so the score is highest at the wrong value; per frame the truth wins 5-10 % of the time (chance 20 %). (A first version of the drive bootstrap averaged a drive drawn twice into one copy; it now resamples per-case values.) Consistent with a coverage bias of IoU.
+- The learned detector raises IoU from about 0.08 to 0.12 but keeps the trend. The score ranks DA-V2-L below DA-V2-S.
+- Per frame even the sun azimuth is at its best only 26 % of the time; the signal exists only on average.
+- Final: shadow IoU is not a usable label-free depth check on real driving data. A future version would need an area-unbiased score (shadow boundaries, caster-shadow correspondences) and scenes with visible casters.
