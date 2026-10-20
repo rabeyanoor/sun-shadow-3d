@@ -26,7 +26,7 @@ and fine-tuning is the second contribution, done only once the diagnostic is sho
 - Satellite NeRF with a known sun direction (S-NeRF, Derksen and Izzo 2021): multi-view satellite images, not single-image depth.
 - OutCast 2204.09341 and ShadowNeuS 2211.14086: shadows used for relighting and for per-scene shape.
 - AdapterShadow 2311.08891 (SAM-based shadow detection): a possible tool.
-- Not found on HF, so not cited until checked: a 2025 preprint "Physics-Grounded Shadow Generation from Monocular 3D Geometry Priors" that ChatGPT mentioned.
+- Hu et al. 2512.06174 (Physics-Grounded Shadow Generation, MoGe-2 point maps + light direction + diffusion) and 2512.06179 (attached shadow detection): checked 2026-10-20, cited in the paper. They generate or detect shadows; none tests depth with them.
 
 ## Contributions (in priority order)
 
