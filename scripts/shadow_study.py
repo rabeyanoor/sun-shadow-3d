@@ -35,6 +35,7 @@ p.add_argument("--every", type=int, default=10)
 p.add_argument("--max-frames", type=int, default=15)
 p.add_argument("--models", nargs="+", default=list(depth_models.MODELS))
 p.add_argument("--shadow-epochs", type=int, default=8)
+p.add_argument("--shadow-weights", default=None, help="load a trained detector instead of training one")
 p.add_argument("--istd-limit", type=int, default=None, help="smoke test: use only this many ISTD images")
 p.add_argument("--out", default=str(ROOT / "outputs" / "study"))
 args = p.parse_args()
@@ -45,7 +46,12 @@ SCALE, UTC_OFFSET = 0.25, 2
 
 # ---------------------------------------------------------------- 1. shadow detector
 t0 = time.time()
-net = shadow_net.train(epochs=args.shadow_epochs, log=lambda m: print(m, flush=True), limit=args.istd_limit)
+if args.shadow_weights:
+    net = shadow_net.build()
+    net.load_state_dict(torch.load(args.shadow_weights, map_location=shadow_net.DEVICE))
+    net.eval()
+else:
+    net = shadow_net.train(epochs=args.shadow_epochs, log=lambda m: print(m, flush=True), limit=args.istd_limit)
 istd_ber = shadow_net.evaluate(net, limit=args.istd_limit)
 print(f"ISTD test BER {istd_ber:.2f}%  ({(time.time() - t0) / 60:.1f} min)", flush=True)
 (out / "shadow_net.json").write_text(json.dumps({"istd_test_ber": istd_ber, "epochs": args.shadow_epochs,
@@ -128,6 +134,8 @@ for name in args.models:
                 for det, obs in f["obs"].items():
                     rows.append(dict(drive=f["drive"], frame=f["frame"], elevation=f["el"], model=name, detector=det,
                                      corruption=corr, value=v, iou=scene.iou(rendered, obs, region),
+                                     kappa=scene.kappa(rendered, obs, region),
+                                     rendered_frac=float(rendered[region].mean()) if region.any() else np.nan,
                                      obs_frac=float(obs[region].mean()) if region.any() else np.nan))
     del model
     torch.cuda.empty_cache()
