@@ -29,7 +29,7 @@ What the full KITTI study (notebook 05, run on Kaggle) adds:
 
 ![kitti study](outputs/figures/05_kitti_study.png)
 
-**Consequence:** the original claim, "a label-free check for *metric* depth", is impossible in principle. A shadow check can at most test relative shape and camera intrinsics. Even that needs a much better shadow detector and scenes with visible casters. `PLAN.md` keeps the full reasoning and the reviewer concerns.
+**Consequence:** the original claim, "a label-free check for *metric* depth", is impossible in principle. A shadow check can at most test relative shape and camera intrinsics. Even that needs a much better shadow detector and scenes with visible casters. `PLAN.md` (kept on the laptop) has the full reasoning and the reviewer concerns.
 
 ![synthetic](outputs/figures/04_synthetic_corruptions.png)
 
@@ -54,7 +54,7 @@ sun-shadow-3d/
 ├── outputs/study/      study CSV, shadow-net metrics, argmax-at-truth and ranking tables
 ├── logs/kaggle/        Kaggle run logs
 ├── paper/            CVPR-style paper: main.tex, sec/, gen/ (generated numbers and tables), fig/
-├── PLAN.md             plan v2, reviewer concerns, prior work, pilot findings
+├── PLAN.md             plan, reviewer concerns and findings log (laptop only, not in git)
 └── requirements.txt
 ```
 
@@ -89,6 +89,7 @@ The laptop has no LaTeX, so it is compiled on a Kaggle CPU kernel:
 .venv/bin/python scripts/kaggle_paper.py <kaggle-user>
 kaggle datasets version -p kaggle/build/paper_data -m update --dir-mode zip   # first time: datasets create
 kaggle kernels push -p kaggle/build/paper
+kaggle kernels output <kaggle-user>/sun-shadow-3d-paper -p paper/build   # main.pdf + LaTeX logs
 ```
 
 ## Prior work

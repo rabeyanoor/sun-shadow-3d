@@ -6,3 +6,7 @@ __pycache__/
 kaggle/build/
 outputs/kaggle/
 *.pt
+# LaTeX build output (PDF and LaTeX logs), kept on the laptop
+paper/build/
+paper/*.pdf
+PLAN.md
