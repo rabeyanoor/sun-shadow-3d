@@ -78,4 +78,5 @@ The laptop is CPU only (8 cores, 14 GB RAM). Notebooks 01-05 are designed to run
 - Drive 0001, 18 frames, DA-V2-S, threshold detector. Compressed depth (gamma or focal 0.6) renders 1.3x more shadow; IoU correlates with the rendered area within a frame (r = 0.48).
 - At the true depth the IoU is 0.064 and two independent masks of the same coverage reach 0.063 (excess 0.002 [-0.022, 0.034]); kappa is -0.003. The rendered and observed shadows agree no better than chance.
 - Kappa removes the pull to large masks but, with no signal, favours small ones. On the synthetic street kappa keeps the signal (0.77 at truth, 0.57-0.60 at +-50 %).
+- A focal error k is exactly a sun error (D^-1 s = (k s_x, k s_y, s_z)), tested; a local shape warp gamma acts the same. On drive 0001 k = 0.6 equals 8.9 deg, k = 0.8 equals 3.5 deg.
 - Paper: `paper/main.tex`, written as a negative result with the identifiability theory.

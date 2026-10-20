@@ -66,3 +66,20 @@ def test_kappa_is_zero_for_independent_masks_and_one_for_equal():
     big = rng.random((200, 200)) < 0.9
     assert scene.iou(big, a, region) > scene.iou(b, a, region)
     assert abs(scene.kappa(big, a, region)) < 0.02
+
+
+@pytest.mark.parametrize("k", [0.6, 1.5])
+def test_focal_error_is_a_sun_error(k):
+    # with focal k*f the same depth map reconstructs D X, D = diag(1/k, 1/k, 1); its shadows under
+    # the sun s are the true scene's shadows under the sun D^-1 s = (k s_x, k s_y, s_z)
+    depth, ground, boxes = synthetic.make_scene(K, H, W)
+    s = synthetic.sun_vector(25, 35)
+    D = np.array([1 / k, 1 / k, 1.0])
+    Kk = K.copy()
+    Kk[0, 0] *= k
+    Kk[1, 1] *= k
+    wrong_focal = synthetic.exact_shadow(Kk, H, W, depth, [(lo * D, hi * D) for lo, hi in boxes], s)
+    s_eq = s / D
+    wrong_sun = synthetic.exact_shadow(K, H, W, depth, boxes, s_eq / np.linalg.norm(s_eq))
+    assert (wrong_focal == wrong_sun).mean() > 0.999
+    assert (wrong_focal != synthetic.exact_shadow(K, H, W, depth, boxes, s)).any()
