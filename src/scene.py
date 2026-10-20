@@ -3,7 +3,6 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 from scipy import ndimage
-from transformers import SegformerForSemanticSegmentation, SegformerImageProcessor
 
 # cityscapes train ids
 ROAD, SIDEWALK, TERRAIN, SKY = 0, 1, 9, 10
@@ -16,6 +15,8 @@ _seg_proc = None
 @torch.no_grad()
 def segment(img):
     global _seg_model, _seg_proc
+    from transformers import SegformerForSemanticSegmentation, SegformerImageProcessor
+
     if _seg_model is None:
         _seg_proc = SegformerImageProcessor.from_pretrained(_SEG_ID)
         _seg_model = SegformerForSemanticSegmentation.from_pretrained(_SEG_ID).eval()
