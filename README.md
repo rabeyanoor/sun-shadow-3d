@@ -47,11 +47,13 @@ sun-shadow-3d/
 │   └── synthetic.py    exact synthetic street: depth by ray casting, exact 3D shadows
 ├── notebooks/          01-06, jupytext .py + executed .ipynb, run one at a time
 ├── tests/              pytest: sun position, rotations, ground plane, scale invariance
-├── scripts/            download_kitti.sh, shadow_study.py (full study), kaggle_build.py
+├── scripts/            download_kitti.sh, shadow_study.py (full study), kaggle_build.py,
+│                       make_paper_numbers.py, make_paper_figures.py, kaggle_paper.py
 ├── kaggle/             one-file Kaggle kernel template for the study (GPU)
 ├── outputs/figures/
 ├── outputs/study/      study CSV, shadow-net metrics, argmax-at-truth and ranking tables
 ├── logs/kaggle/        Kaggle run logs
+├── paper/            CVPR-style paper: main.tex, sec/, gen/ (generated numbers and tables), fig/
 ├── PLAN.md             plan v2, reviewer concerns, prior work, pilot findings
 └── requirements.txt
 ```
@@ -73,6 +75,21 @@ cd notebooks
 ```
 
 Everything runs on a CPU. Notebooks 02 and 03 take a few minutes each, because they run DA-V2-S and SegFormer-b0.
+
+## Paper
+
+`paper/main.tex` writes the study up as a negative result with the identifiability theory
+(scale invariance, focal error = sun error, the bound on the equivalent sun error). Every number in it is a macro
+from `scripts/make_paper_numbers.py`, and the figures come from `scripts/make_paper_figures.py`.
+The laptop has no LaTeX, so it is compiled on a Kaggle CPU kernel:
+
+```bash
+.venv/bin/python scripts/make_paper_numbers.py
+.venv/bin/python scripts/make_paper_figures.py
+.venv/bin/python scripts/kaggle_paper.py <kaggle-user>
+kaggle datasets version -p kaggle/build/paper_data -m update --dir-mode zip   # first time: datasets create
+kaggle kernels push -p kaggle/build/paper
+```
 
 ## Prior work
 
