@@ -13,6 +13,7 @@ This repo is the complete pilot study. Its main finding is partly negative, and 
 | 03 `corruption_study` | On real KITTI, does the score react to depth errors? | No. IoU stays ~0.07 for global scale ×0.5–2, shape warp and wrong focal. It does react to a wrong sun azimuth (±60° → 0.03), so the sun pipeline itself is sound. |
 | 04 `synthetic_identifiability` | Physics or pipeline? (exact synthetic street) | **Both.** See below. |
 | 05 `kitti_study` | Full study: 5 drives, 71 frames, DA-V2-S/L, Depth Pro, MoGe-2-L, threshold and a SegFormer-b2 shadow net trained on ISTD (test BER 1.9 %) | **No.** Scale is flat. Shape and focal move the score the wrong way: IoU is highest for compressed depth, and per frame the truth wins only 5-10 % of the time (chance 20 %). The score ranks DA-V2-L below DA-V2-S. See below. |
+| 06 `coverage_bias` | Why does compressed depth score better? | **Coverage bias.** Compressed depth casts 1.3x more shadow and IoU follows the area. At the true depth the IoU (0.064) equals that of two independent masks of the same coverage (0.063), kappa -0.003: no agreement beyond chance. |
 
 What the synthetic street (notebook 04) shows:
 
@@ -40,11 +41,11 @@ sun-shadow-3d/
 │   ├── kitti.py        KITTI raw readers: oxts, timestamps, calibration chain, velodyne -> depth
 │   ├── sun.py          sun azimuth/elevation (pvlib) and its direction in the camera frame
 │   ├── shadows.py      screen-space shadow rendering from a depth map
-│   ├── scene.py        SegFormer / Mask2Former road masks, dark-asphalt and learned shadow detectors, IoU
+│   ├── scene.py        SegFormer / Mask2Former road masks, dark-asphalt and learned shadow detectors, IoU, kappa
 │   ├── shadow_net.py   SegFormer mit-b2 shadow detector trained on ISTD (train, evaluate, BER)
 │   ├── depth_models.py DA-V2-S/L, Depth Pro, MoGe-2-L behind one predict() call
 │   └── synthetic.py    exact synthetic street: depth by ray casting, exact 3D shadows
-├── notebooks/          01-05, jupytext .py + executed .ipynb, run one at a time
+├── notebooks/          01-06, jupytext .py + executed .ipynb, run one at a time
 ├── tests/              pytest: sun position, rotations, ground plane, scale invariance
 ├── scripts/            download_kitti.sh, shadow_study.py (full study), kaggle_build.py
 ├── kaggle/             one-file Kaggle kernel template for the study (GPU)

@@ -1,0 +1,7 @@
+,value
+iou,0.0644
+chance_iou,0.0625
+excess,0.0019
+excess_lo,-0.0224
+excess_hi,0.0341
+kappa,-0.0027

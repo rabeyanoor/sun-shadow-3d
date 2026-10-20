@@ -51,3 +51,18 @@ def test_exact_shadow_is_on_the_far_side_from_the_sun():
     depth, ground, boxes = synthetic.make_scene(K, H, W)
     sh = synthetic.exact_shadow(K, H, W, depth, boxes, synthetic.sun_vector(-40, 30)) & ground
     assert sh.any()
+
+
+def test_kappa_is_zero_for_independent_masks_and_one_for_equal():
+    import scene
+
+    rng = np.random.default_rng(0)
+    region = np.ones((200, 200), bool)
+    a = rng.random((200, 200)) < 0.3
+    b = rng.random((200, 200)) < 0.6
+    assert abs(scene.kappa(a, b, region)) < 0.02
+    assert np.isclose(scene.kappa(a, a, region), 1.0)
+    # IoU of independent masks grows with the coverage of the prediction, kappa does not
+    big = rng.random((200, 200)) < 0.9
+    assert scene.iou(big, a, region) > scene.iou(b, a, region)
+    assert abs(scene.kappa(big, a, region)) < 0.02

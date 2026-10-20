@@ -1,0 +1,5 @@
+corruption,score,argmax_at_truth,gain_06_minus_true,gain_lo,gain_hi,area_06_over_true
+focal,iou,0.111,0.012,0.005,0.021,1.29
+focal,kappa,0.056,-0.008,-0.021,0.009,1.29
+shape,iou,0.0,0.003,-0.002,0.008,1.344
+shape,kappa,0.0,-0.029,-0.04,-0.018,1.344

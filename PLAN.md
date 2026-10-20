@@ -73,3 +73,9 @@ The laptop is CPU only (8 cores, 14 GB RAM). Notebooks 01-05 are designed to run
 - The learned detector raises IoU from about 0.08 to 0.12 but keeps the trend. The score ranks DA-V2-L below DA-V2-S.
 - Per frame even the sun azimuth is at its best only 26 % of the time; the signal exists only on average.
 - Final: shadow IoU is not a usable label-free depth check on real driving data. A future version would need an area-unbiased score (shadow boundaries, caster-shadow correspondences) and scenes with visible casters.
+
+## Coverage bias (notebook 06, CPU, 2026-10-20)
+- Drive 0001, 18 frames, DA-V2-S, threshold detector. Compressed depth (gamma or focal 0.6) renders 1.3x more shadow; IoU correlates with the rendered area within a frame (r = 0.48).
+- At the true depth the IoU is 0.064 and two independent masks of the same coverage reach 0.063 (excess 0.002 [-0.022, 0.034]); kappa is -0.003. The rendered and observed shadows agree no better than chance.
+- Kappa removes the pull to large masks but, with no signal, favours small ones. On the synthetic street kappa keeps the signal (0.77 at truth, 0.57-0.60 at +-50 %).
+- Paper: `paper/main.tex`, written as a negative result with the identifiability theory.

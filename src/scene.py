@@ -84,3 +84,18 @@ def iou(a, b, region):
     a, b = a & region, b & region
     union = (a | b).sum()
     return float((a & b).sum() / union) if union else float("nan")
+
+
+def kappa(a, b, region):
+    """Cohen's kappa of two masks on the region: IoU-like agreement corrected for chance.
+
+    IoU rewards a larger predicted mask when the target covers a sizeable part of the region;
+    kappa subtracts the agreement two independent masks of the same coverage would reach.
+    """
+    a, b = a[region], b[region]
+    if a.size == 0:
+        return float("nan")
+    p_a, p_b = a.mean(), b.mean()
+    observed = (a == b).mean()
+    chance = p_a * p_b + (1 - p_a) * (1 - p_b)
+    return float((observed - chance) / (1 - chance)) if chance < 1 else float("nan")
