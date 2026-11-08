@@ -10,3 +10,13 @@ outputs/kaggle/
 paper/build/
 paper/*.pdf
 PLAN.md
+# SunCheck: large or re-creatable outputs (cache from the Kaggle kernel, per-frame parts, merged eval CSV of 129 MB)
+outputs/cache/
+outputs/kitti_calib/
+outputs/kaggle_*/
+outputs/study/parts_h20/
+outputs/study/lidar_parts/
+outputs/study/ablation/
+outputs/study/kitti_eval_*.csv
+logs/local/
+paper/fig/*.png

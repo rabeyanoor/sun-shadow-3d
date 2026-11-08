@@ -71,3 +71,78 @@ def sun_vector(azimuth_deg, elevation_deg):
     azimuth 0 = straight ahead, positive = to the right."""
     az, el = np.radians(azimuth_deg), np.radians(elevation_deg)
     return np.array([np.cos(el) * np.sin(az), -np.sin(el), np.cos(el) * np.cos(az)])
+
+
+# ---------------------------------------------------------------- random streets (benchmark)
+# KITTI colour camera at the quarter resolution the study renders at
+K_KITTI_Q = np.array([[180.2, 0, 152.3], [0, 180.2, 43.1], [0, 0, 1]])
+HW_KITTI_Q = (94, 310)
+
+
+def random_street(rng, cam_height=1.65, trees=True, behind=True):
+    """A random street: building rows, trees (trunk + raised canopy), parked cars and poles.
+
+    Many casters are out of view by design, as on KITTI: canopies and upper facades above the
+    image, and everything at z < 0 behind the camera. Returns the list of boxes (lo, hi).
+    """
+    g = cam_height
+    boxes = []
+    z_min = -40.0 if behind else 2.0
+    for side in (-1, 1):
+        z = z_min
+        while z < 80:  # building row with gaps
+            length = rng.uniform(6, 20)
+            if rng.random() < 0.75:
+                x0 = rng.uniform(6, 10)
+                x1 = x0 + rng.uniform(6, 15)
+                top = rng.uniform(4, 18)
+                xs = sorted((side * x0, side * x1))
+                boxes.append((np.array([xs[0], g - top, z]), np.array([xs[1], g, z + length])))
+            z += length + rng.uniform(0, 8)
+        if trees:
+            for zt in rng.uniform(z_min, 60, rng.integers(0, 6)):
+                xt = side * rng.uniform(4, 6.5)
+                r = rng.uniform(1.0, 2.5)
+                lo_c, hi_c = rng.uniform(2.5, 4.0), rng.uniform(6, 11)
+                boxes.append((np.array([xt - 0.15, g - lo_c, zt - 0.15]), np.array([xt + 0.15, g, zt + 0.15])))
+                boxes.append((np.array([xt - r, g - hi_c, zt - r]), np.array([xt + r, g - lo_c, zt + r])))
+        for zc in rng.uniform(4, 45, rng.integers(0, 4)):  # parked cars
+            xc = side * rng.uniform(2.3, 3.5)
+            boxes.append((np.array([xc - 0.9, g - 1.5, zc]), np.array([xc + 0.9, g, zc + 4.2])))
+        for zp in rng.uniform(z_min, 50, rng.integers(0, 3)):  # poles
+            xp = side * rng.uniform(3.8, 5.0)
+            boxes.append((np.array([xp - 0.12, g - rng.uniform(4, 9), zp]), np.array([xp + 0.12, g, zp + 0.24])))
+    return boxes
+
+
+def visible_boxes(K, h, w, depth, boxes):
+    """Boxes that own at least one pixel of the depth map."""
+    d = rays(K, h, w)
+    out = []
+    for lo, hi in boxes:
+        t = _hit_box(d, lo, hi)
+        if np.any(np.isclose(t, depth) & (depth > 0)):
+            out.append((lo, hi))
+    return out
+
+
+def random_sun(rng, el_range=(20, 60)):
+    return sun_vector(rng.uniform(-180, 180), rng.uniform(*el_range))
+
+
+def simulated_detector(rng, shadow, receiver, strength=0.45, albedo=0.25, noise=0.12, blobs=6):
+    """A soft shadow score as a real detector sees it: shadow darkening, dark albedo patches
+    (oil, patches of new asphalt, drains) and pixel noise. Returns (soft score, binary mask)."""
+    from scipy import ndimage
+
+    h, w = shadow.shape
+    patch = np.zeros((h, w))
+    for _ in range(rng.poisson(blobs)):
+        cy, cx = rng.integers(h // 3, h), rng.integers(0, w)
+        ry, rx = rng.uniform(1.5, 6), rng.uniform(4, 25)
+        yy, xx = np.ogrid[:h, :w]
+        patch[((yy - cy) / ry) ** 2 + ((xx - cx) / rx) ** 2 < 1] = 1
+    soft = strength * shadow + albedo * patch + noise * rng.standard_normal((h, w))
+    soft = ndimage.gaussian_filter(soft, 0.7)
+    binary = (soft > 0.5 * strength) & receiver
+    return soft, binary

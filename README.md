@@ -2,7 +2,21 @@
 
 Can the sun check a monocular depth map without labels? GPS and a timestamp give the exact sun direction. A correct depth map should then cast the shadows the camera actually sees.
 
-This repo is the complete pilot study. Its main finding is partly negative, and it is written up as such.
+The repo has two parts. The **pilot study** (notebooks 01–06) shows that a naive overlap check fails on KITTI, and why. **SunCheck** (`src/observability.py`, `scripts/`) is the fix: an observability-aware, coverage-invariant shadow test, evaluated on 400 random streets and 600 KITTI frames.
+
+## SunCheck: main results (600 KITTI frames, 40 drives, 4 depth models)
+
+| Question | Result |
+|---|---|
+| Is there a signal at the true geometry? | Yes. SunCheck AUC 0.71 [0.68, 0.74] with the ISTD detector and 0.71 with no detector at all (chance 0.5). |
+| Does it rank depth models like LiDAR? | Yes, by shape. Without a detector it orders MoGe-2-L > Depth Pro > DA-V2-L > DA-V2-S, the order of the LiDAR AbsRel after median scaling, and every neighbouring difference is positive (drive bootstrap). IoU ranks DA-V2-L below DA-V2-S. |
+| Can it see metric scale? | No (Prop. 1). MoGe-2-L's scale is off by 1.30x, and it still scores best. |
+| Can one frame see a 20–40 % focal or shape error? | No, for any score (truth is best in 5–15 % of cases, chance 20 %). This is Cor. 1. |
+| Sun localisation | Truth best of 5 azimuths: SunCheck 44 %, IoU 29 %. |
+| Pooled focal calibration | IoU's bias flips sign with the sun side (k̂ 0.56 ahead, 1.78 behind), as on synthetic streets. SunCheck's median 0.79 equals its synthetic bias, so the corrected value is 1.00. Held-out error against LiDAR: 40 % (31 % on common support), against 81 % for IoU. Unbiased, but coarse. |
+| Ablation | The 3-state renderer without completion is defined on only 142 of 2389 cases (6 % of the road vs 18 %), so its good numbers come from easy frames. See `paper/gen/table_ablation.tex`. |
+
+Theory checks on real depth maps (`scripts/verify_theory.py`): Prop. 1 and Prop. 2 hold pixel for pixel (IoU 1.00 over 232 cases). The focal/compression equivalence holds only locally (IoU 0.71).
 
 ## Findings
 
@@ -38,6 +52,8 @@ What the full KITTI study (notebook 05, run on Kaggle) adds:
 ```
 sun-shadow-3d/
 ├── src/
+│   ├── observability.py SunCheck: 3-state amodal renderer, AUC, coverage, focal/sun inversion
+│   ├── corruptions.py  scale / shape / focal / sun corruption protocol and the fine focal grid
 │   ├── kitti.py        KITTI raw readers: oxts, timestamps, calibration chain, velodyne -> depth
 │   ├── sun.py          sun azimuth/elevation (pvlib) and its direction in the camera frame
 │   ├── shadows.py      screen-space shadow rendering from a depth map
@@ -47,8 +63,11 @@ sun-shadow-3d/
 │   └── synthetic.py    exact synthetic street: depth by ray casting, exact 3D shadows
 ├── notebooks/          01-06, jupytext .py + executed .ipynb, run one at a time
 ├── tests/              pytest: sun position, rotations, ground plane, scale invariance
-├── scripts/            download_kitti.sh, shadow_study.py (full study), kaggle_build.py,
-│                       make_paper_numbers.py, make_paper_figures.py, kaggle_paper.py
+├── scripts/            pilot: download_kitti.sh, shadow_study.py, kaggle_build.py, make_paper_numbers.py,
+│                       make_paper_figures.py, kaggle_paper.py
+│                       SunCheck: cache_kitti.py + kaggle_cache.py (frames, masks, depth on a Kaggle GPU),
+│                       shadow_eval.py (+ kaggle_eval_shards.py), synthetic_benchmark.py, lidar_reference.py,
+│                       verify_theory.py, make_v2_results.py, make_qualitative.py
 ├── kaggle/             one-file Kaggle kernel template for the study (GPU)
 ├── outputs/figures/
 ├── outputs/study/      study CSV, shadow-net metrics, argmax-at-truth and ranking tables
@@ -76,11 +95,26 @@ cd notebooks
 
 Everything runs on a CPU. Notebooks 02 and 03 take a few minutes each, because they run DA-V2-S and SegFormer-b0.
 
+## Run SunCheck
+
+```bash
+python scripts/kaggle_cache.py <kaggle-user> && kaggle kernels push -p kaggle/build/sun-shadow-cache   # 600 frames, ~1 h GPU
+kaggle kernels output <kaggle-user>/sun-shadow-cache -p outputs && tar xf outputs/cache.tar -C outputs
+.venv/bin/python scripts/shadow_eval.py --cache outputs/cache --workers 4 --parts outputs/study/parts_h20 \
+    --out outputs/study/kitti_eval_h20.csv          # resumable; --shard i/n splits it over machines
+.venv/bin/python scripts/synthetic_benchmark.py --scenes 400 --workers 4 --tag _h20
+.venv/bin/python scripts/synthetic_benchmark.py --scenes 400 --workers 4 --grid-only --tag _cs_h20
+.venv/bin/python scripts/lidar_reference.py         # resumable per drive, reads velodyne scans remotely
+.venv/bin/python scripts/verify_theory.py
+.venv/bin/python scripts/make_v2_results.py         # numbers_v2.tex, tables, figures
+.venv/bin/python scripts/make_qualitative.py
+```
+
 ## Paper
 
-`paper/main.tex` writes the study up as a negative result with the identifiability theory
-(scale invariance, focal error = sun error, the bound on the equivalent sun error). Every number in it is a macro
-from `scripts/make_paper_numbers.py`, and the figures come from `scripts/make_paper_figures.py`.
+`paper/main.tex` ("When Can a Shadow Check Depth?") has the identifiability and observability theory, SunCheck,
+the pilot and the full KITTI study. Every number in it is a macro generated from the result files
+(`make_paper_numbers.py` for the pilot, `make_v2_results.py` and `verify_theory.py` for SunCheck).
 The laptop has no LaTeX, so it is compiled on a Kaggle CPU kernel:
 
 ```bash

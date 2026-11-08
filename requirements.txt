@@ -11,3 +11,4 @@ jupyter
 jupytext
 pytest
 ruff
+remotezip
