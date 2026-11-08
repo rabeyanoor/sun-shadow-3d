@@ -159,6 +159,27 @@ lines += [r"\bottomrule", r"\end{tabular}}",
           r"\label{tab:bench}", r"\end{table}"]
 (GEN / "table_bench.tex").write_text("\n".join(lines) + "\n")
 
+# the same benchmark with 95% scene-bootstrap intervals (supplement)
+lines = [r"\begin{table}[!ht]", r"\centering\small\setlength{\tabcolsep}{3pt}",
+         r"\resizebox{\linewidth}{!}{\begin{tabular}{@{}ll" + "c" * len(CORR) + "@{}}", r"\toprule",
+         "Observed & Score & " + " & ".join(CORR.values()) + r" \\", r"\midrule"]
+for ci, (cond, cname) in enumerate(cond_names.items()):
+    d = syn[syn.condition == cond]
+    for si, (sc, sname) in enumerate(SCORES.items()):
+        cells = []
+        for c in CORR:
+            m, lo, hi, n = truth_argmax(d, sc, c, ["scene"], "scene")
+            cells.append(f"{100 * m:.0f} [{100 * lo:.0f}, {100 * hi:.0f}]")
+        head = rf"\multirow{{{len(SCORES)}}}{{*}}{{{cname}}}" if si == 0 else ""
+        lines.append(head + f" & {sname} & " + " & ".join(cells) + r" \\")
+    if ci < len(cond_names) - 1:
+        lines.append(r"\midrule")
+lines += [r"\bottomrule", r"\end{tabular}}",
+          r"\caption{Tab.~\ref{tab:bench} (main paper) with 95\% bootstrap intervals over scenes"
+          r" (2{,}000 resamples): truth is the"
+          r" best of five values (\%, chance 20).}", r"\label{tab:benchci}", r"\end{table}"]
+(GEN / "table_bench_ci.tex").write_text("\n".join(lines) + "\n")
+
 # self-calibration on synthetic: groups of 10 scenes share one camera; split by the side of the sun
 cs_file = STUDY / f"synthetic_focal_grid_cs_h{H}.csv"
 grid = pd.read_csv(cs_file if cs_file.exists() else STUDY / f"synthetic_focal_grid_h{H}.csv")

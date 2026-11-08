@@ -52,7 +52,8 @@ What the full KITTI study (notebook 05, run on Kaggle) adds:
 ```
 sun-shadow-3d/
 ├── src/
-│   ├── observability.py SunCheck: 3-state amodal renderer, AUC, coverage, focal/sun inversion
+│   ├── suncheck.py     public API: check, compare (common support), calibrate_focal, sun_in_camera_frame
+│   ├── observability.py SunCheck internals: 3-state amodal renderer, AUC, coverage, focal/sun inversion
 │   ├── corruptions.py  scale / shape / focal / sun corruption protocol and the fine focal grid
 │   ├── kitti.py        KITTI raw readers: oxts, timestamps, calibration chain, velodyne -> depth
 │   ├── sun.py          sun azimuth/elevation (pvlib) and its direction in the camera frame
@@ -67,12 +68,14 @@ sun-shadow-3d/
 │                       make_paper_figures.py, kaggle_paper.py
 │                       SunCheck: cache_kitti.py + kaggle_cache.py (frames, masks, depth on a Kaggle GPU),
 │                       shadow_eval.py (+ kaggle_eval_shards.py), synthetic_benchmark.py, lidar_reference.py,
-│                       verify_theory.py, make_v2_results.py, make_qualitative.py
+│                       verify_theory.py, make_v2_results.py, make_qualitative.py, suncheck_cli.py,
+│                       kaggle_synthetic_h.py (H ablation)
 ├── kaggle/             one-file Kaggle kernel template for the study (GPU)
 ├── outputs/figures/
 ├── outputs/study/      study CSV, shadow-net metrics, argmax-at-truth and ranking tables
 ├── logs/kaggle/        Kaggle run logs
-├── paper/            CVPR-style paper: main.tex, sec/, gen/ (generated numbers and tables), fig/
+├── paper/              SunCheck_paper.pdf, SunCheck_supplementary.pdf; sources main.tex, supp.tex,
+│                       sec/, gen/ (generated numbers and tables), fig/
 ├── PLAN.md             plan, reviewer concerns and findings log (laptop only, not in git)
 └── requirements.txt
 ```
@@ -94,6 +97,21 @@ cd notebooks
 ```
 
 Everything runs on a CPU. Notebooks 02 and 03 take a few minutes each, because they run DA-V2-S and SegFormer-b0.
+
+## Paper
+
+The compiled paper is `paper/SunCheck_paper.pdf` (8 pages + references) and the supplementary material
+`paper/SunCheck_supplementary.pdf`. Sources: `paper/main.tex` and `paper/supp.tex`.
+
+## Tests
+
+```bash
+.venv/bin/python -m pytest -q        # 39 tests: theory, renderers, SunCheck API and CLI, pipeline pieces
+.venv/bin/ruff check src scripts tests
+```
+
+The tests need no KITTI download and no GPU: the pipeline tests run on synthetic streets and a synthetic
+cached frame.
 
 ## Use SunCheck on your own data
 
@@ -136,7 +154,7 @@ kaggle kernels output <kaggle-user>/sun-shadow-cache -p outputs && tar xf output
 .venv/bin/python scripts/make_qualitative.py
 ```
 
-## Paper
+## Compile the paper
 
 `paper/main.tex` ("When Can a Shadow Check Depth?") has the identifiability and observability theory, SunCheck,
 the pilot and the full KITTI study. Every number in it is a macro generated from the result files

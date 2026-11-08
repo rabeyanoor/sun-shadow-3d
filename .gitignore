@@ -20,3 +20,6 @@ outputs/study/ablation/
 outputs/study/kitti_eval_*.csv
 logs/local/
 paper/fig/*.png
+# the compiled paper and supplement are kept in the repo
+!paper/SunCheck_paper.pdf
+!paper/SunCheck_supplementary.pdf
