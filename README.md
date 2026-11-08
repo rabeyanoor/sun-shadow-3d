@@ -95,7 +95,33 @@ cd notebooks
 
 Everything runs on a CPU. Notebooks 02 and 03 take a few minutes each, because they run DA-V2-S and SegFormer-b0.
 
-## Run SunCheck
+## Use SunCheck on your own data
+
+SunCheck is a consistency test for a depth map, not a replacement for ground truth. It needs direct sun,
+the road (or another flat receiver) mask, the intrinsics, and the sun in the camera frame (or GPS, UTC time
+and the camera heading). Read the AUC (0.5 = no agreement beyond chance) together with the coverage.
+
+```python
+import sys; sys.path.insert(0, "src")
+import suncheck
+
+s = suncheck.sun_in_camera_frame(lat, lon, "2011-09-26 09:02:25", heading_deg=12.0)
+r = suncheck.check(depth, K, s, road_mask, suncheck.darkness_score(image, road_mask))
+print(r.auc, r.coverage)                       # r.state: 1 shadow, 0 lit, -1 undetermined
+suncheck.compare({"model A": (dA, K, s), "model B": (dB, K, s)}, road_mask, score)   # common support
+k_hat, curve = suncheck.calibrate_focal(frames, bias=0.79)   # coarse effective focal factor, many frames
+```
+
+```bash
+python scripts/suncheck_cli.py --depth depth.npy --road road.png --image image.png \
+    --K 721.5 721.5 609.6 172.9 --lat 49.011 --lon 8.416 --time "2011-09-26 09:02:25" --heading 12 --png states.png
+python scripts/suncheck_cli.py --kitti outputs/cache/2011_09_26_drive_0056_0000000209.npz --model depthpro
+```
+
+It cannot see global scale, and one frame cannot see a 20–40 % focal or depth-compression error; these
+need many frames, and even then the estimate is coarse.
+
+## Run SunCheck (the paper's experiments)
 
 ```bash
 python scripts/kaggle_cache.py <kaggle-user> && kaggle kernels push -p kaggle/build/sun-shadow-cache   # 600 frames, ~1 h GPU

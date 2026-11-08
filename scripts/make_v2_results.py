@@ -20,6 +20,7 @@ import pandas as pd  # noqa: E402
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 from corruptions import K_GRID, TRUTH  # noqa: E402
+from suncheck import refine_argmax  # noqa: E402
 
 STUDY, GEN, FIG = ROOT / "outputs" / "study", ROOT / "paper" / "gen", ROOT / "paper" / "fig"
 GEN.mkdir(parents=True, exist_ok=True)
@@ -64,6 +65,12 @@ def pool(w, weights, level):
     return num / den.replace(0, np.nan)
 
 
+def refine(pooled):
+    """Best focal factor per row, refined by a parabola through the grid maximum and its neighbours (in log k)."""
+    x = np.log(pooled.columns.values.astype(float))
+    return pd.Series([np.exp(refine_argmax(x, row.values)) for _, row in pooled.iterrows()], index=pooled.index)
+
+
 def truth_argmax(df, score, corr, case_cols, group):
     g = df[df.exp == corr] if "exp" in df else df[df.corruption == corr]
     w = g.pivot_table(index=case_cols, columns="value", values=score)
@@ -101,6 +108,24 @@ for Hc, tag in ((12.0, "Twelve"), (20.0, "Twenty")):
 H = 20
 put("hStar", H, "{:d}")
 
+# sun-direction error from a one-minute timestamp error, at the GPS position and time of every cached frame
+try:
+    import pvlib
+
+    fr = pd.read_csv(ROOT / "outputs" / "cache" / "frames.csv")
+    t0 = pd.DatetimeIndex(pd.to_datetime(fr.stamp.str[:19]).dt.tz_localize("Etc/GMT-2"))
+
+    def sun_vec(t):
+        sp = pvlib.solarposition.get_solarposition(t, 49.01, 8.40)
+        az, el = np.radians(sp.azimuth.values), np.radians(sp.apparent_elevation.values)
+        return np.stack([np.cos(el) * np.sin(az), np.cos(el) * np.cos(az), np.sin(el)], -1)
+
+    dot = (sun_vec(t0) * sun_vec(t0 + pd.Timedelta(seconds=60))).sum(1)
+    put("sunErrMinute", np.degrees(np.arccos(np.clip(dot, -1, 1))).max(), "{:.2f}")
+except (ImportError, FileNotFoundError):
+    put("sunErrMinute", "0.25")
+
+put("gridStep", 100 * (K_GRID[1] / K_GRID[0] - 1), "{:.0f}")
 # ------------------------------------------------------------------ synthetic benchmark
 syn = pd.read_csv(STUDY / f"synthetic_benchmark_h{H}.csv")
 put("benchScenes", syn.scene.nunique(), "{:d}")
@@ -151,6 +176,7 @@ for cond in ("offscreen", "detector"):
             pooled = pool(w, wt.reindex(w.index.get_level_values("scene")).values, "group").dropna(how="all")
             k_hat = pooled.idxmax(axis=1).astype(float)
             syn_calib[cond, side, s_name] = k_hat
+            put(mkey("synKFine", cond, side, s_name), np.median(refine(pooled)), "{:.2f}")
             put(mkey("synK", cond, side, s_name), np.median(k_hat), "{:.2f}")
             put(mkey("synKWithin", cond, side, s_name), 100 * np.mean(np.abs(np.log(k_hat)) < 0.13), "{:.0f}")
             # the bias calibrated on the other half of the scenes (even groups -> odd groups)
@@ -251,7 +277,9 @@ for o in OBS:
             gs = g[g.side == side]
             w = gs.pivot_table(index=["drive", "model", "key"], columns="value", values=s)
             wt = gs.drop_duplicates(["key", "model"]).set_index(["drive", "model", "key"]).focal_sens.reindex(w.index)
-            kh = pool(w, wt.values, ["drive", "model"]).dropna(how="all").idxmax(axis=1).astype(float)
+            pooled_side = pool(w, wt.values, ["drive", "model"]).dropna(how="all")
+            kh = pooled_side.idxmax(axis=1).astype(float)
+            put(mkey("kCalibSideFine", o, s, side), np.median(refine(pooled_side)), "{:.2f}")
             calib[o, s, side] = kh
             put(mkey("kCalibSide", o, s, side), np.median(kh), "{:.2f}")
         w = g.pivot_table(index=["drive", "model", "key"], columns="value", values=s)
@@ -342,7 +370,8 @@ if lidar is not None:
         lines.append(f"{mname} & {g.absrel.median():.3f} & {g.absrel_med.median():.3f} & {g.gamma.median():.2f} & "
                      f"{tn.iou.mean():.3f} & {tn.auc.mean():.3f} & {td.auc.mean():.3f}" + r" \\")
     lines += [r"\bottomrule", r"\end{tabular}}",
-              r"\caption{Depth models on KITTI. LiDAR: median AbsRel of the metric depth, after median scaling, and the"
+              r"\caption{Depth models on KITTI. LiDAR: median AbsRel of the metric depth (AbsRel), the same after median"
+              r" scaling (AbsRel$_{\mathrm{med}}$, the shape error used to rank the models), and the"
               r" depth-shape exponent $\gamma$ (1: correct shape). Shadow scores at the calibrated camera, mean over"
               r" frames.}", r"\label{tab:models2}", r"\end{table}"]
     (GEN / "table_models_v2.tex").write_text("\n".join(lines) + "\n")
@@ -366,6 +395,7 @@ t = kit[(kit.exp == "focal_grid") & np.isclose(kit.value, 1.0)]
 for o in OBS:
     for sc in ("auc", "iou"):
         w = t[t.obs == o].pivot_table(index=["drive", "key"], columns="model", values=sc).dropna()
+        put(mkey("nPair", o, sc), len(w), "{:d}")
         for a_, b_ in (("dav2-l", "dav2-s"), ("depthpro", "dav2-l"), ("moge2-l", "dav2-l"), ("moge2-l", "depthpro")):
             dlt = w[a_] - w[b_]
             lo, hi = boot(dlt.values, w.index.get_level_values("drive"))
@@ -389,6 +419,89 @@ for sc in ABL:
 tt = t[t.obs == "net"]
 put("detFracAmodal", 100 * tt.det_frac.median(), "{:.0f}")
 put("detFracNoam", 100 * tt.det_frac_noam.median(), "{:.0f}")
+
+# robustness: stricter minimum class size n_min and minimum coverage C_min, applied after the fact
+kit["n_sh"] = kit.n_det * kit.det_shadow_frac
+kit["n_lit"] = kit.n_det - kit.n_sh
+SWEEP = [(20, 0.0), (50, 0.0), (100, 0.0), (200, 0.0), (20, 0.1), (20, 0.2), (20, 0.3)]
+lines = [r"\begin{table}[!ht]", r"\centering\small\setlength{\tabcolsep}{3pt}",
+         r"\resizebox{\linewidth}{!}{\begin{tabular}{@{}cccccccc@{}}", r"\toprule",
+         r"$n_{\min}$ & $C_{\min}$ & cases & AUC Net & AUC Dark & sun az.\ SC & sun az.\ IoU & L$-$S Dark \\", r"\midrule"]
+for nmin, cmin in SWEEP:
+    kk = kit.copy()
+    bad = (np.minimum(kk.n_sh, kk.n_lit) < nmin) | (kk.det_frac < cmin)
+    kk.loc[bad, "auc"] = np.nan
+    t0 = kk[(kk.exp == "focal_grid") & np.isclose(kk.value, 1.0)]
+    lv = {o: t0[t0.obs == o].auc.mean() for o in OBS}
+    ncase = int(t0[t0.obs == "net"].auc.notna().sum())
+    g = kk[(kk.obs == "net") & (kk.exp == "sun_azimuth")]
+    A = g.pivot_table(index=cases, columns="value", values="auc").dropna()
+    I_ = g.pivot_table(index=cases, columns="value", values="iou").reindex(A.index).dropna()
+    A = A.loc[I_.index]
+    sa, si = 100 * np.mean(A.idxmax(axis=1) == 0), 100 * np.mean(I_.idxmax(axis=1) == 0)
+    w = t0[t0.obs == "thr"].pivot_table(index=["drive", "key"], columns="model", values="auc").dropna()
+    dlt = w["dav2-l"] - w["dav2-s"]
+    lo, hi = boot(dlt.values, w.index.get_level_values("drive"))
+    tag = mkey("sweep", nmin, int(100 * cmin))
+    put(tag + "Cases", ncase, "{:d}")
+    put(tag + "Net", lv["net"], "{:.3f}")
+    put(tag + "Sun", sa, "{:.0f}")
+    put(tag + "SunIou", si, "{:.0f}")
+    lines.append(f"{nmin} & {cmin:.1f} & {ncase} & {lv['net']:.3f} & {lv['thr']:.3f} & {sa:.0f} & {si:.0f} & "
+                 f"{dlt.mean():.3f} [{lo:.3f}, {hi:.3f}]" + r" \\")
+lines += [r"\bottomrule", r"\end{tabular}}",
+          r"\caption{Robustness of the KITTI results to the minimum class size $n_{\min}$ and a minimum coverage"
+          r" $C_{\min}$ (applied after the fact). Cases: (frame, model) pairs scored at the truth. AUC: SunCheck at the"
+          r" true geometry. Sun az.: truth is the best of five azimuths (\%, chance 20), SunCheck and IoU on the same"
+          r" cases. L$-$S: paired SunCheck difference DA-V2-L minus DA-V2-S without a detector, with a drive bootstrap.}",
+          r"\label{tab:sweep}", r"\end{table}"]
+(GEN / "table_sweep.tex").write_text("\n".join(lines) + "\n")
+
+# H ablation: random streets on held-out seeds (10000+) and a third of the KITTI frames, H = 10 / 20 / 40 m
+SYN_H, KIT_H = ROOT / "outputs" / "kaggle_synth_h", ROOT / "outputs" / "kaggle_hablation"
+if all((SYN_H / f"synthetic_focal_grid_h{h}.csv").exists() for h in (10, 20, 40)) and \
+        all((KIT_H / f"h{h}" / "kitti_eval_shard.csv").exists() for h in (10, 40)):
+    lines = [r"\begin{table}[!ht]", r"\centering\small\setlength{\tabcolsep}{3pt}",
+             r"\resizebox{\linewidth}{!}{\begin{tabular}{@{}c|ccc|cccc@{}}", r"\toprule",
+             r" & \multicolumn{3}{c|}{random streets (held-out seeds)} & \multicolumn{4}{c}{KITTI (a third of the frames)} \\",
+             r"$H$ (m) & sun az. & $\hat k$ ahead & $\hat k$ behind & $C$ & AUC Net & AUC Dark & sun az. \\", r"\midrule"]
+    for h in (10, 20, 40):
+        sb = pd.read_csv(SYN_H / f"synthetic_benchmark_h{h}.csv")
+        sb = sb[sb.condition == "detector"]
+        sa = truth_argmax(sb, "auc", "sun_azimuth", ["scene"], "scene")[0]
+        gg = pd.read_csv(SYN_H / f"synthetic_focal_grid_h{h}.csv")
+        gg = gg[gg.condition == "detector"].copy()
+        gg["side"] = np.where(gg.azimuth.abs() < 90, "ahead", "behind")
+        gg["group"] = gg.scene // 10
+        ks = {}
+        for side in ("ahead", "behind"):
+            g2 = gg[gg.side == side]
+            w = g2.pivot_table(index=["group", "scene"], columns="k", values="auc3")
+            wt = g2.drop_duplicates("scene").set_index("scene").focal_sens
+            pooled = pool(w, wt.reindex(w.index.get_level_values("scene")).values, "group").dropna(how="all")
+            ks[side] = np.median(refine(pooled))
+        if h == 20:
+            kk = kit[kit.key.isin(pd.read_csv(KIT_H / "h10" / "kitti_eval_shard.csv", usecols=["key"]).key.unique())]
+        else:
+            kk = pd.read_csv(KIT_H / f"h{h}" / "kitti_eval_shard.csv")
+        t0 = kk[(kk.exp == "focal_grid") & np.isclose(kk.value, 1.0)]
+        cov = t0[t0.obs == "net"].det_frac.median()
+        ln, ld = t0[t0.obs == "net"].auc.mean(), t0[t0.obs == "thr"].auc.mean()
+        ka = truth_argmax(kk[kk.obs == "net"], "auc", "sun_azimuth", cases, "drive")[0]
+        for name, v in (("Sun", 100 * sa), ("Ahead", ks["ahead"]), ("Behind", ks["behind"]), ("Cov", 100 * cov),
+                        ("Net", ln), ("Dark", ld), ("KSun", 100 * ka)):
+            fmt = "{:.0f}" if name in ("Sun", "Cov", "KSun") else ("{:.2f}" if len(name) > 4 else "{:.3f}")
+            put(mkey("hab", h, name), v, fmt)
+        lines.append(f"{h} & {100 * sa:.0f} & {ks['ahead']:.2f} & {ks['behind']:.2f} & {100 * cov:.0f}\\% & {ln:.3f} & "
+                     f"{ld:.3f} & {100 * ka:.0f}" + r" \\")
+    put("habNFrames", kk.key.nunique(), "{:d}")
+    lines += [r"\bottomrule", r"\end{tabular}}",
+              r"\caption{Sensitivity to the caster height prior $H$. Random streets: 200 scenes with seeds never used"
+              r" elsewhere, detector condition; truth is the best of five sun azimuths (\%, chance 20) and the pooled"
+              r" focal factor (refined, truth 1) with the sun ahead or behind. KITTI: the same " + macros["habNFrames"] +
+              r" frames for every $H$; median coverage at the truth, mean SunCheck AUC at the truth, and truth is the"
+              r" best of five sun azimuths (Net, \%).}", r"\label{tab:hablation}", r"\end{table}"]
+    (GEN / "table_hablation.tex").write_text("\n".join(lines) + "\n")
 
 # the model's own camera against the calibrated one
 own = kit[kit.exp == "own_camera"]
