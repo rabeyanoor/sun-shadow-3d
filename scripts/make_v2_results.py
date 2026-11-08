@@ -181,7 +181,7 @@ truth = kit[(kit.exp == "focal") & (kit.value == 1.0)]
 put("kDetFrac", 100 * truth.det_frac.mean(), "{:.0f}")
 cases = ["drive", "key", "model"]
 OBS = {"net": "Net", "thr": "Dark"}
-lines = [r"\begin{table}[t]", r"\centering\small\setlength{\tabcolsep}{3pt}",
+lines = [r"\begin{table}[!ht]", r"\centering\small\setlength{\tabcolsep}{3pt}",
          r"\resizebox{\linewidth}{!}{\begin{tabular}{@{}ll" + "c" * (len(CORR) + 1) + "@{}}", r"\toprule",
          "Obs. & Score & " + " & ".join(CORR.values()) + r" & at truth \\", r"\midrule"]
 KSCORES = {**SCORES, "auc_cs": "SunCheck (CS)"}

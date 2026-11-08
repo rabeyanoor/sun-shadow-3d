@@ -178,7 +178,7 @@ def coverage_fig():
     axes[0].legend(frameon=False, fontsize=5)
     axes[1].legend(frameon=False, fontsize=5, ncol=2, loc="center", bbox_to_anchor=(0.5, 0.52))
     ks = np.exp(np.linspace(np.log(0.5), np.log(2.0), 200))
-    axes[2].plot(ks, np.degrees(np.arctan(np.abs(1 - ks) / (2 * np.sqrt(ks)))), "k-", lw=1.0, label="worst case (Cor. 1)")
+    axes[2].plot(ks, np.degrees(np.arctan(np.abs(1 - ks) / (2 * np.sqrt(ks)))), "k-", lw=1.0, label="worst case (Cor. 2)")
     axes[2].plot(eq.index, eq.focal, "o", color="#009E73", label="KITTI 0001 sun")
     axes[2].axhline(30, color="#888888", lw=0.6, ls="--", label="sun error not seen per frame")
     log_axis(axes[2], [0.5, 0.6, 0.8, 1.0, 1.25, 1.5, 2.0])
