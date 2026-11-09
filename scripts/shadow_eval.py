@@ -70,7 +70,8 @@ def run_frame(args):
         "thr": (obs.darkness(img, receiver), threshold_mask(img, receiver)),
     }
     key = Path(path).stem
-    meta = dict(key=key, drive=key[:21], frame=int(key[22:]), focal_sens=float(obs.focal_sensitivity(s)),
+    drive, frame = key.rsplit("_", 1)  # KITTI 2011_09_26_drive_0001_0000000007, PandaSet panda_080_0000000003
+    meta = dict(key=key, drive=drive, frame=int(frame), focal_sens=float(obs.focal_sensitivity(s)),
                 sun_x=float(s[0]), sun_y=float(s[1]), sun_z=float(s[2]))
     rows = []
     for m in MODELS:

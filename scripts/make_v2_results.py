@@ -154,8 +154,9 @@ for ci, (cond, cname) in enumerate(cond_names.items()):
     put(mkey("benchIouFocalGain", cond), (g[0.6] - g[1.0]).mean(), "{:.3f}")
 lines += [r"\bottomrule", r"\end{tabular}}",
           r"\caption{Random-street benchmark (" + macros["benchScenes"] + r" scenes, KITTI camera). Per scene, how often"
-          r" the true value scores best among five (\%, chance 20). Off-screen casters break the overlap scores; the"
-          r" rank score with the three-state renderer (SunCheck, $H=" + macros["hStar"] + r"$\,m) keeps the truth on top.}",
+          r" the true value scores best among five (\%, chance 20). For the sun every score is far above chance and"
+          r" off-screen casters lower the overlap scores most; for focal length and shape no score reaches chance on"
+          r" single frames (SunCheck: $H=" + macros["hStar"] + r"$\,m).}",
           r"\label{tab:bench}", r"\end{table}"]
 (GEN / "table_bench.tex").write_text("\n".join(lines) + "\n")
 
