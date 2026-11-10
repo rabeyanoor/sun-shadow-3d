@@ -1,6 +1,6 @@
 """Paper figures as vector PDFs at column width, from outputs/study and the local KITTI drive.
 
-    python scripts/make_paper_figures.py            # all figures into paper/fig
+    python scripts/make_paper_figures.py            # all figures into paper_tits/fig
     python scripts/make_paper_figures.py --no-teaser   # skip the one that runs a depth model
 """
 import argparse
@@ -22,7 +22,7 @@ import shadows  # noqa: E402
 import synthetic  # noqa: E402
 
 STUDY = ROOT / "outputs" / "study"
-FIG = ROOT / "paper" / "fig"
+FIG = ROOT / "paper_tits" / "fig"
 FIG.mkdir(parents=True, exist_ok=True)
 COL, FULL = 3.3, 6.9
 plt.rcParams.update({"font.size": 7, "axes.titlesize": 7, "axes.labelsize": 7, "legend.fontsize": 6,

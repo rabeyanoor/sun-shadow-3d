@@ -4,8 +4,8 @@
 
 Reads the synthetic benchmark (synthetic_benchmark_h*.csv, synthetic_focal_grid_h*.csv,
 ablation/), and the KITTI evaluation (kitti_eval_h*.csv). H (the caster height prior) is chosen
-on the held-out ablation seeds only. Writes paper/gen/numbers_v2.tex, paper/gen/table_bench.tex,
-paper/gen/table_kitti_v2.tex and paper/fig/{bench,kitti_v2,calib}.pdf.
+on the held-out ablation seeds only. Writes paper_tits/gen/numbers_v2.tex, table_bench.tex,
+table_kitti_v2.tex and paper_tits/fig/{bench,kitti_v2,calib}.pdf.
 """
 import sys
 from pathlib import Path
@@ -22,7 +22,7 @@ sys.path.insert(0, str(ROOT / "src"))
 from corruptions import K_GRID, TRUTH  # noqa: E402
 from suncheck import refine_argmax  # noqa: E402
 
-STUDY, GEN, FIG = ROOT / "outputs" / "study", ROOT / "paper" / "gen", ROOT / "paper" / "fig"
+STUDY, GEN, FIG = ROOT / "outputs" / "study", ROOT / "paper_tits" / "gen", ROOT / "paper_tits" / "fig"
 GEN.mkdir(parents=True, exist_ok=True)
 SCORES = {"iou": "IoU", "kappa": r"$\kappa$", "auc2": "AUC", "auc_am": "+ amodal", "auc": "SunCheck"}
 CORR = {"focal": "focal", "shape": "shape", "sun_azimuth": "sun az."}

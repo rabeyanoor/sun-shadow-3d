@@ -1,6 +1,6 @@
 """Every number in the paper, as LaTeX macros, from the result files in outputs/study.
 
-    python scripts/make_paper_numbers.py        # writes paper/gen/numbers.tex and paper/gen/table_*.tex
+    python scripts/make_paper_numbers.py        # writes paper_tits/gen/numbers.tex and table_*.tex
 
 The synthetic street is cheap, so it is recomputed here rather than read from a notebook.
 """
@@ -19,7 +19,7 @@ import shadows  # noqa: E402
 import synthetic  # noqa: E402
 
 STUDY = ROOT / "outputs" / "study"
-GEN = ROOT / "paper" / "gen"
+GEN = ROOT / "paper_tits" / "gen"
 GEN.mkdir(parents=True, exist_ok=True)
 TRUE = {"scale": 1.0, "shape": 1.0, "focal": 1.0, "sun_azimuth": 0.0}
 LOW = {"scale": 0.5, "shape": 0.6, "focal": 0.6, "sun_azimuth": -60.0}

@@ -2,8 +2,8 @@
 
 Generated from scripts/kaggle_cache.py (KITTI).
 
-    python scripts/kaggle_cache.py <kaggle-user> [smoke]
-    kaggle kernels push -p kaggle/build/sun-shadow-cache
+    python scripts/kaggle_cache_panda.py <kaggle-user> [smoke]
+    kaggle kernels push -p kaggle/build/sun-shadow-cache-panda
 
 The ISTD shadow detector is reused from the output of the <user>/sun-shadow-study kernel. The
 kernel writes one cache.tar with an .npz per frame and frames.csv; scripts/shadow_eval.py reads it.

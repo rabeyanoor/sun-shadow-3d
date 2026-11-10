@@ -4,7 +4,7 @@
 
 For Depth Pro at the calibrated camera, ranks frames by the Net SunCheck AUC and shows the two best
 and the two worst: RGB, detector probability on the road, the two-state rendering, and the three
-states of SunCheck (shadow, lit, undetermined). Writes paper/fig/qualitative.pdf and prints the
+states of SunCheck (shadow, lit, undetermined). Writes paper_tits/fig/qualitative.pdf and prints the
 chosen frames, so the failure cases can be inspected and described.
 """
 import sys
@@ -58,7 +58,7 @@ for row, (key, lab) in enumerate(zip(picks, labels)):
         ax.axis("off")
     print(lab, key, f"auc={r.auc:.3f} iou={r.iou:.3f} det={r.det_frac:.2f} az={r.azimuth:.0f} el={r.elevation:.0f}")
 fig.tight_layout(pad=0.2, h_pad=0.3, w_pad=0.2)
-out = ROOT / "paper" / "fig" / "qualitative.pdf"
+out = ROOT / "paper_tits" / "fig" / "qualitative.pdf"
 fig.savefig(out, bbox_inches="tight", pad_inches=0.02, dpi=300)
 fig.savefig(out.with_suffix(".png"), bbox_inches="tight", pad_inches=0.02, dpi=150)
 print("->", out)

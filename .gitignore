@@ -1,38 +1,60 @@
+# Python and tooling
 .venv/
-data/
 __pycache__/
 .ipynb_checkpoints/
-*.zip
-kaggle/build/
-outputs/kaggle/
+.pytest_cache/
+.ruff_cache/
+
+# Datasets, caches, model weights and archives (downloaded or re-created by the scripts)
+data/
 *.pt
-# LaTeX build output (PDF and LaTeX logs), kept on the laptop
-paper/build/
-paper/*.pdf
-PLAN.md
-# SunCheck: large or re-creatable outputs (cache from the Kaggle kernel, per-frame parts, merged eval CSV of 129 MB)
+*.zip
 outputs/cache/
+outputs/cache_panda/
 outputs/kitti_calib/
-outputs/kaggle_*/
-outputs/study/parts_h20/
+outputs/v2/
+outputs/panda_survey*/
+outputs/kaggle*/
+
+# Large or per-frame evaluation outputs (the merged eval CSVs are 130 MB each)
+outputs/study/parts_*/
 outputs/study/lidar_parts/
 outputs/study/ablation/
 outputs/study/kitti_eval_*.csv
-logs/local/
-paper/fig/*.png
-# the compiled paper and supplement are kept in the repo
-!paper/SunCheck_paper.pdf
-!paper/SunCheck_supplementary.pdf
-# PandaSet (T-ITS revision): cache, per-frame parts, merged eval CSV (130 MB), surveys, Kaggle build output
-outputs/cache_panda/
-outputs/study/parts_panda/
 outputs/study/panda_eval_*.csv
-outputs/panda_survey*/
-outputs/paper_tits_build/
+outputs/study/*_v2.csv
+
+# Kaggle build folders, run logs and local paper builds
+kaggle/build/
+logs/
+outputs/paper_tits_build*/
+outputs/submission/
+outputs/figures/
 paper_tits/main.pdf
 paper_tits/supp.pdf
-outputs/v2/
-outputs/kaggle_detector_v2/
-outputs/study/parts_v2_*/
-outputs/study/*_eval_v2_*.csv
-outputs/kaggle_v2_eval/
+
+# Pilot notebooks: only the jupytext .py files are versioned
+notebooks/*.ipynb
+
+# By-products of the generators that the manuscript does not use
+paper_tits/gen/table_kitti.tex
+paper_tits/gen/table_models.tex
+paper_tits/gen/kitti_table_calib_n.tex
+paper_tits/gen/kitti_table_kregime.tex
+paper_tits/gen/kitti_table_regimes.tex
+paper_tits/fig/bench.pdf
+paper_tits/fig/calib.pdf
+paper_tits/fig/coverage.pdf
+paper_tits/fig/kitti_study.pdf
+paper_tits/fig/kitti_v2.pdf
+paper_tits/fig/panda_calib_n.pdf
+paper_tits/fig/panda_coverage.pdf
+paper_tits/fig/synthetic.pdf
+paper_tits/fig/*.png
+
+# Kept on the author's laptop only
+PLAN.md
+paper/
+paper_tits/cover_letter.md
+paper_tits/SUBMISSION_CHECKLIST.md
+paper_tits/portal_fields.md
