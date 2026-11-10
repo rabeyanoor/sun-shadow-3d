@@ -31,3 +31,8 @@ outputs/panda_survey*/
 outputs/paper_tits_build/
 paper_tits/main.pdf
 paper_tits/supp.pdf
+outputs/v2/
+outputs/kaggle_detector_v2/
+outputs/study/parts_v2_*/
+outputs/study/*_eval_v2_*.csv
+outputs/kaggle_v2_eval/

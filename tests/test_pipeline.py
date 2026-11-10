@@ -91,7 +91,7 @@ def fake_frame(tmp_path):
 def test_shadow_eval_scores_a_frame_with_every_experiment(fake_frame):
     import shadow_eval as se
 
-    rows = se.run_frame((str(fake_frame), 20.0, {}))
+    rows = se.run_frame((str(fake_frame), 20.0, {}, None))
     exps = {r["exp"] for r in rows}
     assert {"scale", "shape", "focal", "sun_azimuth", "focal_grid", "sun_az_grid", "sun_el_grid"} <= exps
     assert {r["obs"] for r in rows} == {"net", "thr"}
@@ -100,3 +100,16 @@ def test_shadow_eval_scores_a_frame_with_every_experiment(fake_frame):
     assert all("auc_cs" in r and "cs_frac" in r for r in rows)
     grid = [r for r in rows if r["exp"] == "sun_az_grid" and r["obs"] == "net"]
     assert len({r["cs_frac"] for r in grid}) == 1  # one common support per group
+
+
+def test_shadow_eval_scores_detector_v2_like_v1(fake_frame, tmp_path):
+    import shadow_eval as se
+
+    z = np.load(fake_frame)
+    prob2 = tmp_path / f"{fake_frame.stem}.npy"
+    np.save(prob2, z["prob"])  # same probability as v1 -> identical scores
+    rows = se.run_frame((str(fake_frame), 20.0, {}, str(prob2)))
+    assert {r["obs"] for r in rows} == {"net", "thr", "net2", "fuse"}
+    v1 = [r["auc"] for r in rows if r["obs"] == "net"]
+    v2 = [r["auc"] for r in rows if r["obs"] == "net2"]
+    np.testing.assert_allclose(v1, v2)

@@ -69,3 +69,17 @@ def test_lit_needs_the_h_max_point_in_view():
     in_view = (Q[..., 2] > 0) & (v >= 0)
     agree = ((st == obs.LIT) == in_view)[ground]
     assert agree.mean() > 0.97
+
+
+def test_fuse_is_mean_rank_on_road():
+    import observability as obs
+
+    region = np.array([[True, True, True, False]])
+    a = np.array([[0.1, 0.5, 0.9, 7.0]])
+    b = np.array([[3.0, 2.0, 1.0, 7.0]])
+    f = obs.fuse([a, b], region)
+    assert f[0, 3] == 0
+    np.testing.assert_allclose(f[0, :3], [(1 / 3 + 1) / 2, 2 / 3, (1 + 1 / 3) / 2], rtol=1e-6)
+    same = obs.fuse([a], region)
+    assert obs.auc(same, region & (a > 0.4), region & (a < 0.4), min_count=1) == obs.auc(a, region & (a > 0.4),
+                                                                                         region & (a < 0.4), min_count=1)

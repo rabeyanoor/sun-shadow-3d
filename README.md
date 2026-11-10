@@ -59,7 +59,8 @@ sun-shadow-3d/
 │   ├── sun.py          sun azimuth/elevation (pvlib) and its direction in the camera frame
 │   ├── shadows.py      screen-space shadow rendering from a depth map
 │   ├── scene.py        SegFormer / Mask2Former road masks, dark-asphalt and learned shadow detectors, IoU, kappa
-│   ├── shadow_net.py   SegFormer mit-b2 shadow detector trained on ISTD (train, evaluate, BER)
+│   ├── shadow_net.py   shadow detectors: v1 SegFormer mit-b2 on ISTD; v2 mit-b5 512 px on SBU+ISTD with
+│   │                   low-sun augmentation, Dice loss and flip averaging (train, evaluate, BER)
 │   ├── depth_models.py DA-V2-S/L, Depth Pro, MoGe-2-L behind one predict() call
 │   └── synthetic.py    exact synthetic street: depth by ray casting, exact 3D shadows
 ├── notebooks/          01-06, jupytext .py + executed .ipynb, run one at a time
@@ -70,6 +71,7 @@ sun-shadow-3d/
 │                       shadow_eval.py (+ kaggle_eval_shards.py), synthetic_benchmark.py, lidar_reference.py,
 │                       verify_theory.py, make_v2_results.py, make_qualitative.py, suncheck_cli.py,
 │                       kaggle_synthetic_h.py (H ablation)
+│                       detector v2: train_detector.py, reprob.py, kaggle_detector.py (GPU kernel)
 ├── kaggle/             one-file Kaggle kernel template for the study (GPU)
 ├── outputs/figures/
 ├── outputs/study/      study CSV, shadow-net metrics, argmax-at-truth and ranking tables
@@ -152,6 +154,18 @@ kaggle kernels output <kaggle-user>/sun-shadow-cache -p outputs && tar xf output
 .venv/bin/python scripts/verify_theory.py
 .venv/bin/python scripts/make_v2_results.py         # numbers_v2.tex, tables, figures
 .venv/bin/python scripts/make_qualitative.py
+```
+
+Detector v2 and the fused observation (T-ITS revision). Training data: SBU (non-commercial use; cite Vicente
+et al., ECCV 2016) and ISTD. The detector design was fixed on the ISTD and SBU test sets only.
+
+```bash
+.venv/bin/python scripts/kaggle_detector.py <kaggle-user> && kaggle kernels push -p kaggle/build/sun-shadow-detector-v2
+kaggle kernels output <kaggle-user>/sun-shadow-detector-v2 -p outputs/kaggle_detector_v2   # weights, BER, prob2_*.tar
+.venv/bin/python scripts/kaggle_eval_shards.py <kaggle-user> 5 0 1 2 3 4 --v2   # and --data=panda; then merge with
+.venv/bin/python scripts/shadow_eval.py ... --prob2 outputs/v2/prob2_kitti      # observations net2 (Net-v2), fuse
+.venv/bin/python scripts/pixel_metrics.py ... --prob2 outputs/v2/prob2_kitti
+.venv/bin/python scripts/make_tits_results.py --data kitti   # and --data panda
 ```
 
 ## Compile the paper

@@ -87,6 +87,19 @@ def darkness(img, receiver):
     return 1.0 - lum / max(lit, 1e-3)
 
 
+def fuse(scores, region):
+    """Detector + darkness fusion: mean percentile rank over the road of several soft scores (0 off the road).
+
+    AUC is a rank statistic, so averaging ranks combines scores of any scale with no weight to tune.
+    """
+    out = np.zeros(region.shape, np.float32)
+    if not region.any():
+        return out
+    for q in scores:
+        out[region] += (rankdata(q[region]) / region.sum()).astype(np.float32)
+    return out / len(scores)
+
+
 def scores(state, soft, binary, region, min_count=20):
     """All scores of a three-state rendering against an observed soft score and binary mask."""
     det = region & (state != UNDETERMINED)

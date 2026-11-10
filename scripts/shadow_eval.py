@@ -11,6 +11,8 @@ it renders under
 with the two-state and the three-state renderer, and scores both against two observations:
     net  ISTD-trained SegFormer: soft = probability, binary = probability > 0.5
     thr  no detector: soft = road darkness, binary = dark-asphalt threshold
+    net2 detector v2 (SegFormer-B5, SBU + ISTD), only with --prob2 <dir of <key>.npy from scripts/reprob.py>
+    fuse mean road percentile rank of net2 and darkness (obs.fuse); binary = both masks agree (with --prob2)
 One CSV row per (frame, model, observation, experiment, value).
 """
 import argparse
@@ -60,15 +62,23 @@ def score_all(state3, rendered2, observations, region):
     return out
 
 
+def detector_obs(prob, receiver):
+    prob = np.asarray(prob, np.float32)
+    return prob, ndimage.median_filter((prob > 0.5).astype(np.uint8), size=5).astype(bool) & receiver
+
+
 def run_frame(args):
-    path, h_max, f_pred = args
+    path, h_max, f_pred, prob2 = args
     z = np.load(path)
     receiver, img, s, K, sky = z["receiver"], z["img"], z["sun"], z["K"], z["sky"]
     observations = {
-        "net": (z["prob"].astype(np.float32),
-                ndimage.median_filter((z["prob"] > 0.5).astype(np.uint8), size=5).astype(bool) & receiver),
+        "net": detector_obs(z["prob"], receiver),
         "thr": (obs.darkness(img, receiver), threshold_mask(img, receiver)),
     }
+    if prob2:
+        observations["net2"] = detector_obs(np.load(prob2), receiver)
+        observations["fuse"] = (obs.fuse([observations["net2"][0], observations["thr"][0]], receiver),
+                                observations["net2"][1] & observations["thr"][1])
     key = Path(path).stem
     drive, frame = key.rsplit("_", 1)  # KITTI 2011_09_26_drive_0001_0000000007, PandaSet panda_080_0000000003
     meta = dict(key=key, drive=drive, frame=int(frame), focal_sens=float(obs.focal_sensitivity(s)),
@@ -131,6 +141,7 @@ if __name__ == "__main__":
     p.add_argument("--h-max", type=float, default=20.0)
     p.add_argument("--limit", type=int, default=None)
     p.add_argument("--out", default=str(ROOT / "outputs" / "study" / "kitti_eval.csv"))
+    p.add_argument("--prob2", default=None, help="folder of detector-v2 probabilities <key>.npy (observation net2)")
     p.add_argument("--parts", default=None, help="directory of per-frame CSVs; finished frames are skipped")
     p.add_argument("--shard", action="append", default=None,
                    help="i/n: only frames i, i+n, i+2n, ... (repeatable), to split the work over machines")
@@ -139,7 +150,12 @@ if __name__ == "__main__":
     jobs = []
     for _, r in index.iterrows():
         f_pred = {m: r[f"f_{m}"] / r["f_true"] for m in MODELS if f"f_{m}" in r and np.isfinite(r[f"f_{m}"])}
-        jobs.append((str(Path(a.cache) / f"{r['key']}.npz"), a.h_max, f_pred))
+        prob2 = None
+        if a.prob2:
+            prob2 = str(Path(a.prob2) / f"{r['key']}.npy")
+            if not Path(prob2).exists():
+                raise FileNotFoundError(prob2)
+        jobs.append((str(Path(a.cache) / f"{r['key']}.npz"), a.h_max, f_pred, prob2))
     jobs = jobs[: a.limit]
     if a.shard:
         picks = [tuple(map(int, x.split("/"))) for x in a.shard]
