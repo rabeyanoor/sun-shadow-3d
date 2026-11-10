@@ -23,3 +23,11 @@ paper/fig/*.png
 # the compiled paper and supplement are kept in the repo
 !paper/SunCheck_paper.pdf
 !paper/SunCheck_supplementary.pdf
+# PandaSet (T-ITS revision): cache, per-frame parts, merged eval CSV (130 MB), surveys, Kaggle build output
+outputs/cache_panda/
+outputs/study/parts_panda/
+outputs/study/panda_eval_*.csv
+outputs/panda_survey*/
+outputs/paper_tits_build/
+paper_tits/main.pdf
+paper_tits/supp.pdf
