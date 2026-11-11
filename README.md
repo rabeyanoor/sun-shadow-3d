@@ -128,11 +128,15 @@ python scripts/verify_theory.py              # propositions on real depth maps
 
 ```bash
 python scripts/make_paper_numbers.py         # pilot numbers        -> paper_tits/gen
-python scripts/make_v2_results.py            # benchmark and KITTI  -> paper_tits/gen, paper_tits/fig
+python scripts/make_v2_results.py outputs/study/kitti_eval_v1only_h20.csv   # benchmark and KITTI -> paper_tits/gen, paper_tits/fig
 python scripts/make_paper_figures.py && python scripts/make_qualitative.py
 python scripts/make_tits_results.py --data kitti && python scripts/make_tits_results.py --data panda
 python scripts/kaggle_paper_tits.py <user>   # compiles paper_tits/ on a Kaggle CPU kernel (no local LaTeX needed)
 ```
+
+`make_v2_results.py` reads the KITTI evaluation with the original observations only (Net and Dark), i.e. the
+output of `shadow_eval.py` run without `--prob2`, saved as `kitti_eval_v1only_h20.csv`. With the full
+`kitti_eval_h20.csv` (which also holds Net-v2 and Fused) a few bootstrap bounds move in the third decimal.
 
 The pilot study (`notebooks/`, `scripts/shadow_study.py`, `scripts/kaggle_build.py`) shows why a naive
 overlap check fails on KITTI; it motivated SunCheck and supplies the pilot numbers of the paper.
