@@ -47,7 +47,7 @@ def segment_m2f(img, repo="facebook/mask2former-swin-large-cityscapes-semantic")
 def receiver_mask(labels, classes=(ROAD,)):
     """Flat, mostly uniform surfaces where a cast shadow is easy to see.
 
-    Road only by default: in notebook 02 the tram-track gravel was labelled sidewalk and
+    Road only by default: in the pilot study the tram-track gravel was labelled sidewalk and
     its dark stones were read as shadow.
     """
     return np.isin(labels, list(classes))

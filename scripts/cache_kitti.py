@@ -33,7 +33,7 @@ import shadows  # noqa: E402
 import sun  # noqa: E402
 
 S3 = "https://s3.eu-central-1.amazonaws.com/avg-kitti/raw_data"
-SCALE, UTC_OFFSET = 0.25, 2  # KITTI timestamps are CEST (notebook 01)
+SCALE, UTC_OFFSET = 0.25, 2  # KITTI timestamps are CEST (checked against the sun position in the pilot study)
 
 p = argparse.ArgumentParser()
 p.add_argument("--drives", nargs="+", required=True)

@@ -59,6 +59,7 @@ for row, (key, lab) in enumerate(zip(picks, labels)):
     print(lab, key, f"auc={r.auc:.3f} iou={r.iou:.3f} det={r.det_frac:.2f} az={r.azimuth:.0f} el={r.elevation:.0f}")
 fig.tight_layout(pad=0.2, h_pad=0.3, w_pad=0.2)
 out = ROOT / "paper_tits" / "fig" / "qualitative.pdf"
+out.parent.mkdir(parents=True, exist_ok=True)
 fig.savefig(out, bbox_inches="tight", pad_inches=0.02, dpi=300)
 fig.savefig(out.with_suffix(".png"), bbox_inches="tight", pad_inches=0.02, dpi=150)
 print("->", out)

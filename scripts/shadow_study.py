@@ -4,7 +4,7 @@
 
 For every frame, every depth model and both shadow detectors (dark-asphalt threshold and the
 ISTD-trained SegFormer), it renders shadows from the predicted depth under the same four
-corruptions as notebook 03 and scores them on the road. One CSV row per
+corruptions as the pilot corruption study and scores them on the road. One CSV row per
 (frame, model, detector, corruption, value).
 """
 import argparse

@@ -1,6 +1,6 @@
 """A learned shadow detector: SegFormer fine-tuned on ISTD (shadow image + shadow mask).
 
-The pilot used a dark-asphalt threshold, and the synthetic study (notebook 04) showed that
+The pilot used a dark-asphalt threshold, and the synthetic identifiability study showed that
 this is where the shape/focal signal got lost. Hugging Face has no ready shadow detector,
 so we train one. Reported with the standard balanced error rate (BER, lower is better).
 

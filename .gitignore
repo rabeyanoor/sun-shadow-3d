@@ -30,31 +30,11 @@ logs/
 outputs/paper_tits_build*/
 outputs/submission/
 outputs/figures/
-paper_tits/main.pdf
-paper_tits/supp.pdf
 
-# Pilot notebooks: only the jupytext .py files are versioned
-notebooks/*.ipynb
-
-# By-products of the generators that the manuscript does not use
-paper_tits/gen/table_kitti.tex
-paper_tits/gen/table_models.tex
-paper_tits/gen/kitti_table_calib_n.tex
-paper_tits/gen/kitti_table_kregime.tex
-paper_tits/gen/kitti_table_regimes.tex
-paper_tits/fig/bench.pdf
-paper_tits/fig/calib.pdf
-paper_tits/fig/coverage.pdf
-paper_tits/fig/kitti_study.pdf
-paper_tits/fig/kitti_v2.pdf
-paper_tits/fig/panda_calib_n.pdf
-paper_tits/fig/panda_coverage.pdf
-paper_tits/fig/synthetic.pdf
-paper_tits/fig/*.png
-
-# Kept on the author's laptop only
+# Manuscript, pilot notebooks and planning notes: kept on the author's laptop only
 PLAN.md
 paper/
-paper_tits/cover_letter.md
-paper_tits/SUBMISSION_CHECKLIST.md
-paper_tits/portal_fields.md
+paper_tits/
+notebooks/
+scripts/kaggle_paper_tits.py
+scripts/make_tits_results.py

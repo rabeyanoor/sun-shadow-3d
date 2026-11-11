@@ -21,7 +21,7 @@ for monocular depth, and the paper states exactly what such a test can and canno
 | Does it work at a low sun? | Only weakly: learned detectors degrade (0.51–0.60), road darkness gives 0.67, and the test is rarely defined. |
 | Can it calibrate the camera? | Coarsely: pooling 160 frames estimates the effective focal factor to about 21 %, with a bias that depends on the sun regime. |
 
-All numbers in the paper are LaTeX macros generated from the result files in `outputs/study/`.
+Every number in the paper is generated from the result files in `outputs/study/`.
 
 ## Repository layout
 
@@ -40,10 +40,8 @@ sun-shadow-3d/
 │   └── shadow_net.py        SegFormer shadow detectors (v1: ISTD; v2: SBU+ISTD, low-sun augmentation)
 ├── scripts/                 experiment pipeline (see "Reproducing the paper")
 ├── tests/                   pytest suite (no dataset download or GPU needed)
-├── notebooks/               pilot study 01–06 (jupytext .py files)
 ├── kaggle/                  Kaggle kernel template used by the build scripts
-├── outputs/study/           result tables (CSV) behind every number in the paper
-└── paper_tits/              IEEE T-ITS manuscript: LaTeX sources, generated tables/figures, PDFs
+└── outputs/study/           result tables (CSV) behind every number in the paper
 ```
 
 ## Installation
@@ -124,21 +122,22 @@ python scripts/lidar_panda.py --cache outputs/cache_panda --out outputs/study/pa
 python scripts/verify_theory.py              # propositions on real depth maps
 ```
 
-**5. Tables, figures and the PDF**
+**5. Tables and figures**
 
 ```bash
-python scripts/make_paper_numbers.py         # pilot numbers        -> paper_tits/gen
-python scripts/make_v2_results.py outputs/study/kitti_eval_v1only_h20.csv   # benchmark and KITTI -> paper_tits/gen, paper_tits/fig
+python scripts/make_paper_numbers.py         # pilot numbers
+python scripts/make_v2_results.py outputs/study/kitti_eval_v1only_h20.csv   # benchmark and KITTI
 python scripts/make_paper_figures.py && python scripts/make_qualitative.py
-python scripts/make_tits_results.py --data kitti && python scripts/make_tits_results.py --data panda
-python scripts/kaggle_paper_tits.py <user>   # compiles paper_tits/ on a Kaggle CPU kernel (no local LaTeX needed)
 ```
+
+The generators write LaTeX tables and PDF figures to `paper_tits/gen` and `paper_tits/fig`; the manuscript
+itself is not part of this repository.
 
 `make_v2_results.py` reads the KITTI evaluation with the original observations only (Net and Dark), i.e. the
 output of `shadow_eval.py` run without `--prob2`, saved as `kitti_eval_v1only_h20.csv`. With the full
 `kitti_eval_h20.csv` (which also holds Net-v2 and Fused) a few bootstrap bounds move in the third decimal.
 
-The pilot study (`notebooks/`, `scripts/shadow_study.py`, `scripts/kaggle_build.py`) shows why a naive
+The pilot study (`scripts/shadow_study.py`, `scripts/kaggle_build.py`) shows why a naive
 overlap check fails on KITTI; it motivated SunCheck and supplies the pilot numbers of the paper.
 
 ## Data and licenses
