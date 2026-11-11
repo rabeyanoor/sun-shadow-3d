@@ -179,6 +179,9 @@ overlap check fails on KITTI; it motivated SunCheck and supplies the pilot numbe
 
 No dataset, cached frame or model weight is stored in this repository; the scripts download or read them.
 
+The code is released under the [MIT License](LICENSE). The datasets keep their own licenses above
+(KITTI and SBU allow non-commercial use only).
+
 ## Citation
 
 ```bibtex
