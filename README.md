@@ -4,9 +4,36 @@ Code and results for the paper **"Can Sunlight Audit Monocular Depth? Identifiab
 Label-Free Shadow Test for Automated-Driving Perception"** (R. Noor; under review at IEEE Transactions on
 Intelligent Transportation Systems).
 
-A GPS position and a timestamp fix the direction of the sun. A correct depth map, rendered under that sun,
-should cast the shadows the camera actually sees. **SunCheck** turns this into a label-free consistency test
-for monocular depth, and the paper states exactly what such a test can and cannot see.
+## What this research does
+
+Self-driving cars and roadside cameras increasingly estimate **depth from a single image** (monocular depth).
+In the field there is usually no laser scanner to tell whether that depth is right. This project asks whether
+**the sun can serve as a free reference**:
+
+1. The car's **GPS position and the time** give the exact direction of the sun.
+2. If the predicted depth map is correct, rebuilding the scene in 3D and **lighting it with that sun** should
+   cast shadows on the road **where the camera actually sees shadows**.
+3. Comparing the rendered and observed shadows therefore checks the depth map **without any labels**.
+
+<p align="center">
+  <img src="docs/images/idea.png" width="520" alt="Sun direction from GPS and time, observed shadow, and shadows rendered from depth">
+</p>
+
+The work has two parts:
+
+- **Theory: what shadows can and cannot see.** Shadows never reveal the overall scale of a depth map, a focal
+  length error looks exactly like a sun direction error, and a driving camera's narrow view hides the objects
+  (trees, buildings) that cast most road shadows. A naive overlap score is therefore misleading.
+- **SunCheck: a test built on that theory.** Each road pixel is rendered as *shadow*, *lit* or *undetermined*
+  (when the object casting the shadow is out of view), and agreement is scored only where the answer is known.
+  On 600 KITTI and 664 PandaSet frames, SunCheck ranks four modern depth models in the same order as a laser
+  scanner, using no ground truth at all.
+
+<p align="center">
+  <img src="docs/images/examples.png" width="900" alt="KITTI frames where SunCheck agrees best and worst with the observed shadow">
+  <br><sub>KITTI frames where SunCheck agrees best (top) and worst (bottom) with the observed shadow.
+  Red = rendered shadow, yellow = lit, grey = undetermined. Images: KITTI raw data, CC BY-NC-SA 3.0.</sub>
+</p>
 
 ## Key results
 
@@ -41,7 +68,8 @@ sun-shadow-3d/
 ├── scripts/                 experiment pipeline (see "Reproducing the paper")
 ├── tests/                   pytest suite (no dataset download or GPU needed)
 ├── kaggle/                  Kaggle kernel template used by the build scripts
-└── outputs/study/           result tables (CSV) behind every number in the paper
+├── outputs/study/           result tables (CSV) behind every number in the paper
+└── docs/images/             figures used in this README
 ```
 
 ## Installation
