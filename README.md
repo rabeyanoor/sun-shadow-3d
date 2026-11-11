@@ -101,6 +101,8 @@ sun-shadow-3d/
 │   └── shadow_net.py        SegFormer shadow detectors (v1: ISTD; v2: SBU+ISTD, low-sun augmentation)
 ├── scripts/                 experiment pipeline (see "Reproducing the paper")
 ├── tests/                   pytest suite (no dataset download or GPU needed)
+├── notebooks/               pilot study 01–06 with outputs (sun direction, rendered shadows, corruptions,
+│                            synthetic identifiability, KITTI study, coverage bias)
 ├── kaggle/                  Kaggle kernel template used by the build scripts
 ├── outputs/study/           result tables (CSV) behind every number in the paper
 └── figures/                 result figures (PNG), also used in this README
@@ -199,7 +201,7 @@ itself is not part of this repository.
 output of `shadow_eval.py` run without `--prob2`, saved as `kitti_eval_v1only_h20.csv`. With the full
 `kitti_eval_h20.csv` (which also holds Net-v2 and Fused) a few bootstrap bounds move in the third decimal.
 
-The pilot study (`scripts/shadow_study.py`, `scripts/kaggle_build.py`) shows why a naive
+The pilot study (`notebooks/`, `scripts/shadow_study.py`, `scripts/kaggle_build.py`) shows why a naive
 overlap check fails on KITTI; it motivated SunCheck and supplies the pilot numbers of the paper.
 
 ## Data and licenses

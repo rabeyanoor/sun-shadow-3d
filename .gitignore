@@ -31,10 +31,10 @@ outputs/paper_tits_build*/
 outputs/submission/
 outputs/figures/
 
-# Manuscript, pilot notebooks and planning notes: kept on the author's laptop only
+# Manuscript, jupytext copies of the notebooks and planning notes: kept on the author's laptop only
 PLAN.md
 paper/
 paper_tits/
-notebooks/
+notebooks/*.py
 scripts/kaggle_paper_tits.py
 scripts/make_tits_results.py
